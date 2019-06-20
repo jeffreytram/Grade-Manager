@@ -15,7 +15,22 @@ Additional Functions:
 -What if?
 
 v1.0
-[x]input grade breakdown and grades
+[x] 6.19 input grade breakdown and grades
+[x] 6.19 add delete button
+[x] 6.19 calculate grade
+[x] 6.19 account for grades not completed yet
+
+[x] 6.20 add hints for textfields
+[x] 6.20 remove need for set button
+    -whenever add/delete/calculate button pressed, save current values
+[x] 6.20 add note if grade percent goes over 100%
+[x] 6.20 add about/description section
+[x] 6.20 accounts for weight totals over 100 (extra credit)
+
+[] documentation/help page
+[] notes on prediction
+    -assumes highest possible grade is 100
+
 
 
 
