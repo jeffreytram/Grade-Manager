@@ -1,0 +1,21 @@
+Grade Manager - Planning
+
+6.19.19
+
+Basic Functions:
+-input the grade breakdown of their class
+-add/delete grades
+-input their current grade
+-output current grade
+-output max/min possible grade
+
+Additional Functions:
+-Saving the users info when they come back
+-Multiple classes in different tabs
+-What if?
+
+v1.0
+[x]input grade breakdown and grades
+
+
+
