@@ -14,6 +14,7 @@ Additional Functions:
 -Multiple classes in different tabs
 -What if?
 
+
 v1.0
 [x] 6.19 input grade breakdown and grades
 [x] 6.19 add delete button
@@ -23,14 +24,28 @@ v1.0
 [x] 6.20 add hints for textfields
 [x] 6.20 remove need for set button
     -whenever add/delete/calculate button pressed, save current values
-[x] 6.20 add note if grade percent goes over 100%
+[x] 6.20 add note if total grade percent goes over 100%
 [x] 6.20 add about/description section
 [x] 6.20 accounts for weight totals over 100 (extra credit)
+[x] 6.20 take NaN grade (no input) as forecast
+
+[x] 6.21 round values to 2 decimal points
+[x] 6.21 change weight input to percent
+[x] 6.21 remove negative forecast
+[x] 6.21 warning for negative grade
+[x] 6.21 add note if total grade percent less than 100%
+
+[] code reformatting, improved naming convention
+
+[] add grade manager functions
+    -adding multiple classes up to 10
+    -switching between which class is currently displaying
+    -navigation tab on top
+
+[] exploring session storing options (cookies)
+
+[] support different grading scale. (rather than out of 100%, out of x amount of points)
 
 [] documentation/help page
 [] notes on prediction
     -assumes highest possible grade is 100
-
-
-
-

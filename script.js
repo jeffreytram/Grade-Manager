@@ -18,7 +18,20 @@ let gradeList = {
         this.grades.splice(position,1);
     },
     validInput: function(percent, grade){
-        if(percent>=0 && !isNaN(grade)){
+        if(percent>=0 && (grade >=0 || isNaN(grade))){
+            return true;
+        }
+        return false;
+    },
+    forecast: function(grade){
+        if(isNaN(grade)){
+            return true;
+        }
+        return false;
+    },
+    containsNegative: false,
+    isNegative: function(grade, percent){
+        if(grade<0 || percent<0){
             return true;
         }
         return false;
@@ -27,24 +40,36 @@ let gradeList = {
         let currentGrade = 0;
         let completedPercent = 0;
         let totalPercent = 0;
-        let forecast = false;
+        let toggleForecastOn = false;
+        this.containsNegative = false;
         this.grades.forEach(function(grade){
-            if(this.validInput(grade.percent, grade.grade) && grade.grade>=0){
-                currentGrade += grade.percent * grade.grade;
-                completedPercent += grade.percent;
+            //case 1: number percent and grade
+            if(this.validInput(grade.percent, grade.grade) && !this.forecast(grade.grade)){
+                currentGrade += grade.percent * grade.grade / 100;
+                completedPercent += grade.percent/100;
             }
-            else if(grade.grade<0){
-                forecast = true;
+            //case 3: no percent, and no grade
+            if(this.forecast(grade.grade)){
+                toggleForecastOn = true;
             }
-            totalPercent += grade.percent;
+            if(this.isNegative(grade.percent, grade.grade)){
+                this.containsNegative = true;
+            }
+            //case 2: number percent and no grade
+            if(!isNaN(grade.percent)){
+                totalPercent += grade.percent/100;
+            }
         }, this);
         if(totalPercent >1){
             view.displayOverHundredWarning();
         }
+        if(totalPercent <1){
+            view.displayUnderHundredWarning();
+        }
         if(completedPercent === 0){
             return 0;
         }
-        if(forecast){
+        if(toggleForecastOn){
             if(completedPercent>1){
                 completedPercent = 1;
             }
@@ -56,11 +81,11 @@ let gradeList = {
         let lowestGrade = 0;
         this.grades.forEach(function(grade){
             if(this.validInput(grade.percent, grade.grade)){
-                if(grade.grade<0){
+                if(this.forecast(grade.grade)){
                     lowestGrade += grade.percent *0;
                 }
                 else{
-                    lowestGrade += grade.percent * grade.grade;
+                    lowestGrade += grade.percent * grade.grade /100;
                 }
             }
         }, this);
@@ -69,12 +94,12 @@ let gradeList = {
     calculateHighestGrade: function(){
         let highestGrade = 0;
         this.grades.forEach(function(grade){
-            if(this.validInput(grade.percent, grade.grade)){
-                if(grade.grade<0){
-                    highestGrade += grade.percent *100;
+            if(this.validInput(grade.percent)){
+                if(this.forecast(grade.grade)){
+                    highestGrade += grade.percent;
                 }
                 else{
-                    highestGrade += grade.percent * grade.grade;
+                    highestGrade += grade.percent * grade.grade/100;
                 }
             }
         }, this);
@@ -99,7 +124,13 @@ let handlers = {
         let currentGrade = gradeList.calculateCurrentGrade();
         let lowestGrade = gradeList.calculateLowestGrade();
         let highestGrade = gradeList.calculateHighestGrade();
-        view.displayCurrentGrade(currentGrade,lowestGrade,highestGrade);
+        if(gradeList.containsNegative){
+            view.displayNegativeWarning();
+        }
+        else{
+            view.displayCurrentGrade(currentGrade,lowestGrade,highestGrade);
+        }
+        
     }
 };
 
@@ -123,12 +154,14 @@ let view = {
             gradeInputPercent.type = "number";
             gradeInputPercent.placeholder = "Grade Weight "+(position+1);
             gradeInputPercent.id = position + ".2";
+            gradeInputPercent.min = "0";
 
             let gradeInputGrade = document.createElement("input");
              gradeInputGrade.value = grade.grade;
             gradeInputGrade.type = "number";
             gradeInputGrade.placeholder = "Grade Earned "+(position+1);
             gradeInputGrade.id = position + ".3";
+            gradeInputGrade.min = "0";
 
             let gradeDeleteButton = document.createElement("button");
             gradeDeleteButton.textContent = "Delete";
@@ -155,11 +188,19 @@ let view = {
     },
     displayCurrentGrade: function(cur,low,high){
         let gradesP = document.getElementById("calculations");
-        gradesP.innerHTML += "Current Grade: " + cur +"%<br/>Lowest Possible Grade: "+ low+"%<br/>Highest Possible Grade: "+high+"%";
+        gradesP.innerHTML += "Current Grade: " + cur.toFixed(2) +"%<br/><br/>Lowest Possible Grade: "+ low.toFixed(2)+"%<br/>Highest Possible Grade: "+high.toFixed(2)+"%";
     },
     displayOverHundredWarning: function(){
         let gradesP = document.getElementById("calculations");
-        gradesP.innerHTML += "Note: The grade weight total exceeds 100%. Your class should include extra credit<br/><br/>";
+        gradesP.innerHTML += "Note: The grade weight total exceeds 100%. Your class should include extra credit.<br/><br/>";
+    },
+    displayUnderHundredWarning: function(){
+        let gradesP = document.getElementById("calculations");
+        gradesP.innerHTML += "Note: The grade weight total is below 100%.<br/><br/>";
+    },
+    displayNegativeWarning: function(){
+        let gradesP = document.getElementById("calculations");
+        gradesP.innerHTML = "Warning: One of the values you entered is negative. There should only be positive values.<br/>";
     },
     clearCurrentGradeDisplay: function(){
         let gradesP = document.getElementById("calculations");
