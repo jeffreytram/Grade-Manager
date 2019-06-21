@@ -34,18 +34,18 @@ v1.0
 [x] 6.21 remove negative forecast
 [x] 6.21 warning for negative grade
 [x] 6.21 add note if total grade percent less than 100%
+[x] 6.21 code formatting changes
 
-[] code reformatting, improved naming convention
 
 [] add grade manager functions
-    -adding multiple classes up to 10
-    -switching between which class is currently displaying
-    -navigation tab on top
+    - [] adding multiple classes up to 10
+    - [] switching between which class is currently displaying
+    - [] navigation tab on top
 
 [] exploring session storing options (cookies)
 
 [] support different grading scale. (rather than out of 100%, out of x amount of points)
 
-[] documentation/help page
-[] notes on prediction
+[] documentation/help/notes page
     -assumes highest possible grade is 100
+    -other assumptions made if any
