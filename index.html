@@ -12,12 +12,20 @@
 
     <body>
         <h2>Grade Manager</h2>
-        <p>Click "Add Grade" to get started! <br /> Enter the grade weight and grade earned as a percent. For grades not
+        <p>Click "Add Class" to get started! <br /> Enter the grade weight and grade earned as a percent. For grades not
             received, leave the grade empty.</p>
-        <div>
-            <button onclick="handlers.addGrade()">Add Grade</button>
+        <ul id="navigation">
+
+        </ul>
+        <div id="classTitle">
         </div>
-        <ul style="list-style-type:none;">
+
+        <div>
+            <br /><br /><br />
+            <button onclick="handlers.addGrade()">Add Grade</button>
+            <button onclick="handlers.addClass()">Add Class</button>
+        </div>
+        <ul id="viewGrades" style="list-style-type:none;">
         </ul>
         <div>
             <button onclick="handlers.calculateCurrentGrade()">Calculate</button>

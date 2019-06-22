@@ -35,17 +35,21 @@ v1.0
 [x] 6.21 warning for negative grade
 [x] 6.21 add note if total grade percent less than 100%
 [x] 6.21 code formatting changes
+[x] 6.21 add grade manager functions
+    - [x] reformat gradeList(now called class) object with methods in the constructor and prototype
+    - [x] make all the previous functions work with only 1 class
+    - [x] adapt the code to multiple classes
+    - [x] navigation tab
+    - [x] switching between which class is currently displaying
+    - [x] save information when switching classes
+    - [x] edit class name
+    - [x] delete class
 
+[] planning layout
 
-[] add grade manager functions
-    - [] adding multiple classes up to 10
-    - [] switching between which class is currently displaying
-    - [] navigation tab on top
-
+[] improve formatting, naming convention, efficency
 [] exploring session storing options (cookies)
-
 [] support different grading scale. (rather than out of 100%, out of x amount of points)
-
 [] documentation/help/notes page
     -assumes highest possible grade is 100
     -other assumptions made if any

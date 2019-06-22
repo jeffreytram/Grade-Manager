@@ -1,130 +1,192 @@
-let gradeList = {
-    grades: [],
-    addGrade: function () {
-        this.grades.push({
-            title: null,
-            percent: null,
-            grade: null
-        });
-    },
-    setAllGrades: function () {
-        this.grades.forEach(function (grade, position) {
-            grade.title = document.getElementById(position + ".1").value;
-            grade.percent = parseFloat(document.getElementById(position + ".2").value);
-            grade.grade = parseFloat(document.getElementById(position + ".3").value);
-        });
-    },
-    deleteGrade: function (position) {
-        this.grades.splice(position, 1);
-    },
-    //valid input is not negative, number percent and number grade, number percent and no grade
-    //if valid input, can do current grade calculation
-    validInputHelper: function (percent, grade) {
-        if (percent >= 0 && (grade >= 0 || isNaN(grade))) {
-            return true;
-        }
-        return false;
-    },
-    forecastHelper: function (grade) {
-        if (isNaN(grade)) {
-            return true;
-        }
-        return false;
-    },
-    containsNegative: false,
-    isNegative: function (grade, percent) {
-        if (grade < 0 || percent < 0) {
-            return true;
-        }
-        return false;
-    },
-    calculateCurrentGrade: function () {
-        let currentGrade = 0;
-        let completedPercent = 0;
-        let totalPercent = 0;
-        let toggleForecastOn = false;
-        this.containsNegative = false;
-        this.grades.forEach(function (grade) {
-            //case 1: number percent and grade
-            if (this.validInputHelper(grade.percent, grade.grade) && !this.forecastHelper(grade.grade)) {
-                currentGrade += grade.percent * grade.grade / 100;
-                completedPercent += grade.percent / 100;
-            }
-            if (this.forecastHelper(grade.grade)) {
-                toggleForecastOn = true;
-            }
-            if (this.isNegative(grade.percent, grade.grade)) {
-                this.containsNegative = true;
-            }
-            if (!isNaN(grade.percent)) {
-                totalPercent += grade.percent;
-            }
-        }, this);
-        if (totalPercent > 100) {
-            view.displayOverHundredWarning();
-        }
-        if (totalPercent < 100) {
-            view.displayUnderHundredWarning();
-        }
-        if (completedPercent === 0) {
-            return 0;
-        }
-        if (toggleForecastOn) {
-            if (completedPercent > 1) {
-                completedPercent = 1;
-            }
-            return currentGrade / completedPercent;
-        }
-        return currentGrade
-    },
-    calculateLowestGrade: function () {
-        let lowestGrade = 0;
-        this.grades.forEach(function (grade) {
-            if (this.validInputHelper(grade.percent, grade.grade)) {
-                if (this.forecastHelper(grade.grade)) {
-                    lowestGrade += grade.percent * 0;
-                }
-                else {
-                    lowestGrade += grade.percent * grade.grade / 100;
-                }
-            }
-        }, this);
-        return lowestGrade;
-    },
-    calculateHighestGrade: function () {
-        let highestGrade = 0;
-        this.grades.forEach(function (grade) {
-            if (this.validInputHelper(grade.percent)) {
-                if (this.forecastHelper(grade.grade)) {
-                    highestGrade += grade.percent;
-                }
-                else {
-                    highestGrade += grade.percent * grade.grade / 100;
-                }
-            }
-        }, this);
-        return highestGrade;
-    }
+function Class(className, gradeList, containsNegative) {
+    this.className = className;
+    this.gradeList = gradeList;
+    this.containsNegative = containsNegative;
+}
+Class.prototype.addGrade = function () {
+    this.gradeList.push({
+        title: null,
+        percent: null,
+        grade: null
+    });
 };
+Class.prototype.setAllGrades = function () {
+    this.gradeList.forEach(function (grade, position) {
+        grade.title = document.getElementById(position + ".1").value;
+        grade.percent = parseFloat(document.getElementById(position + ".2").value);
+        grade.grade = parseFloat(document.getElementById(position + ".3").value);
+    });
+};
+Class.prototype.deleteGrade = function (position) {
+    this.gradeList.splice(position, 1);
+};
+Class.prototype.validInputHelper = function (percent, grade) {
+    if (percent >= 0 && (grade >= 0 || isNaN(grade))) {
+        return true;
+    }
+    return false;
+};
+Class.prototype.forecastHelper = function (grade) {
+    if (isNaN(grade)) {
+        return true;
+    }
+    return false;
+};
+//TODO: note need to fix/check contains negative function, incorporate this function into other methods that used containsNegative
+Class.prototype.toggleContainsNegative = function (booleanValue) {
+    this.containsNegative = booleanValue
+};
+Class.prototype.isNegative = function (grade, percent) {
+    if (grade < 0 || percent < 0) {
+        return true;
+    }
+    return false;
+};
+Class.prototype.calculateCurrentGrade = function () {
+    let currentGrade = 0;
+    let completedPercent = 0;
+    let totalPercent = 0;
+    let toggleForecastOn = false;
+    this.containsNegative = false;
+    gradeManager.classes[gradeManager.currentClass].gradeList.forEach(function (grade) {
+        //case 1: number percent and grade
+        if (this.validInputHelper(grade.percent, grade.grade) && !this.forecastHelper(grade.grade)) {
+            currentGrade += grade.percent * grade.grade / 100;
+            completedPercent += grade.percent / 100;
+        }
+        if (this.forecastHelper(grade.grade)) {
+            toggleForecastOn = true;
+        }
+        if (this.isNegative(grade.percent, grade.grade)) {
+            this.containsNegative = true;
+        }
+        if (!isNaN(grade.percent)) {
+            totalPercent += grade.percent;
+        }
+    }, this);
+    if (totalPercent > 100) {
+        view.displayOverHundredWarning();
+    }
+    if (totalPercent < 100) {
+        view.displayUnderHundredWarning();
+    }
+    if (completedPercent === 0) {
+        return 0;
+    }
+    if (toggleForecastOn) {
+        if (completedPercent > 1) {
+            completedPercent = 1;
+        }
+        return currentGrade / completedPercent;
+    }
+    return currentGrade
+};
+Class.prototype.calculateLowestGrade = function () {
+    let lowestGrade = 0;
+    gradeManager.classes[gradeManager.currentClass].gradeList.forEach(function (grade) {
+        if (this.validInputHelper(grade.percent, grade.grade)) {
+            if (this.forecastHelper(grade.grade)) {
+                lowestGrade += grade.percent * 0;
+            }
+            else {
+                lowestGrade += grade.percent * grade.grade / 100;
+            }
+        }
+    }, this);
+    return lowestGrade;
+}
+Class.prototype.calculateHighestGrade = function () {
+    let highestGrade = 0;
+    gradeManager.classes[gradeManager.currentClass].gradeList.forEach(function (grade) {
+        if (this.validInputHelper(grade.percent)) {
+            if (this.forecastHelper(grade.grade)) {
+                highestGrade += grade.percent;
+            }
+            else {
+                highestGrade += grade.percent * grade.grade / 100;
+            }
+        }
+    }, this);
+    return highestGrade;
+}
+let gradeManager = {
+    classes: [],
+    currentClass: "",
+    setClassName: function (index) {
+        debugger;
+        headerElement = document.querySelector("h3")
+        this.classes[index].className = headerElement.innerText;
+    },
+    deleteClass: function (index) {
+        this.classes.splice(index, 1);
+    },
+    existValidClassHelper: function () {
+        if (this.classes.length > 0) {
+            return true;
+        }
+        return false;
+    },
+    addClass: function () {
+        this.classes.push(new Class("class " + (this.classes.length + 1), [], false));
+        this.setCurrentClass(this.classes.length - 1);
+        //add a button to switch to that class
+    },
+    setCurrentClass: function (index) {
+        this.currentClass = index;
+    }
+}
+
 //button handlers
 let handlers = {
+    classSaveName: function (index) {
+        gradeManager.setClassName(index);
+        view.displayClass();
+    },
+    deleteClass: function (index) {
+        gradeManager.deleteClass(index);
+        if (gradeManager.existValidClassHelper()) {
+            gradeManager.setCurrentClass(0);
+            view.clearCurrentGradeDisplay();
+            view.setClassDisplayTitle(gradeManager.currentClass);
+            view.displayGrades();
+            view.displayClass();
+        }
+        else {
+            view.clearAll();
+        }
+        //TODO: set currently class to a valid one
+    },
+    setCurrentClass: function (index) {
+        gradeManager.classes[gradeManager.currentClass].setAllGrades();
+        view.clearCurrentGradeDisplay();
+        gradeManager.setCurrentClass(index);
+        view.setClassDisplayTitle(gradeManager.currentClass);
+        view.displayGrades();
+    },
+    addClass: function () {
+        gradeManager.addClass();
+        view.setClassDisplayTitle(gradeManager.currentClass);
+        view.displayGrades();
+        view.displayClass();
+    },
     addGrade: function () {
-        gradeList.setAllGrades();
-        gradeList.addGrade();
+        //TODO: may need a currently selected view class index as paramter
+        gradeManager.classes[gradeManager.currentClass].setAllGrades();
+        gradeManager.classes[gradeManager.currentClass].addGrade();
         view.displayGrades();
     },
     deleteGrade: function (position) {
-        gradeList.setAllGrades();
-        gradeList.deleteGrade(position);
+        gradeManager.classes[gradeManager.currentClass].setAllGrades();
+        gradeManager.classes[gradeManager.currentClass].deleteGrade(position);
         view.displayGrades();
     },
     calculateCurrentGrade: function () {
         view.clearCurrentGradeDisplay();
-        gradeList.setAllGrades();
-        let currentGrade = gradeList.calculateCurrentGrade();
-        let lowestGrade = gradeList.calculateLowestGrade();
-        let highestGrade = gradeList.calculateHighestGrade();
-        if (gradeList.containsNegative) {
+        gradeManager.classes[gradeManager.currentClass].setAllGrades();
+        let currentGrade = gradeManager.classes[gradeManager.currentClass].calculateCurrentGrade();
+        let lowestGrade = gradeManager.classes[gradeManager.currentClass].calculateLowestGrade();
+        let highestGrade = gradeManager.classes[gradeManager.currentClass].calculateHighestGrade();
+        if (gradeManager.classes[gradeManager.currentClass].containsNegative) {
             view.displayNegativeWarning();
         }
         else {
@@ -136,11 +198,53 @@ let handlers = {
 
 //display of grades
 let view = {
+    clearAll: function () {
+        let classUl = document.getElementById("navigation");
+        classUl.innerHTML = "";
+        let classHeader = document.querySelector("h3");
+        classHeader.innerText = "";
+        this.clearCurrentGradeDisplay;
+    },
+    setClassDisplayTitle: function () {
+        let classDiv = document.getElementById("classTitle");
+        classDiv.innerHTML = "";
+
+        let classHeader = document.createElement("h3");
+        classHeader.innerText = gradeManager.classes[gradeManager.currentClass].className;
+        classHeader.contentEditable = true;
+
+        let classSaveNameButton = document.createElement("button");
+        classSaveNameButton.textContent = "Save Name";
+        classSaveNameButton.className = "classSaveNameButton";
+        classSaveNameButton.id = +gradeManager.currentClass;
+
+        let classDeleteButton = document.createElement("button");
+        classDeleteButton.textContent = "Delete";
+        classDeleteButton.className = "classDeleteButton";
+        classDeleteButton.id = gradeManager.currentClass;
+
+        classDiv.appendChild(classHeader);
+        classDiv.appendChild(classSaveNameButton);
+        classDiv.appendChild(classDeleteButton);
+    },
+    displayClass: function () {
+        classUl = document.getElementById("navigation");
+        classUl.innerHTML = "";
+        gradeManager.classes.forEach(function (classNavBar, position) {
+            let classLi = document.createElement("li");
+            classLi.className = "navigationText";
+            classLi.innerHTML = classNavBar.className;
+            classLi.id = position;
+
+            classUl.appendChild(classLi);
+        });
+    },
     displayGrades: function () {
-        let gradesUl = document.querySelector("ul");
+        let gradesUl = document.getElementById("viewGrades");
         gradesUl.innerHTML = "";
         //clear display
-        gradeList.grades.forEach(function (grade, position) {
+        //TODO:
+        gradeManager.classes[gradeManager.currentClass].gradeList.forEach(function (grade, position) {
             let gradesDiv = document.createElement("div");
 
             let gradeInputTitle = document.createElement("input");
@@ -179,10 +283,26 @@ let view = {
     },
     setUpEventListeners: function () {
         //add addgrade event listener
-        let gradesUl = document.querySelector("ul");
+        let gradesUl = document.getElementById("viewGrades");
         gradesUl.addEventListener("click", function (event) {
             if (event.target.className === "gradeDeleteButton") {
                 handlers.deleteGrade(event.target.parentNode.id);
+            }
+        });
+        let navUl = document.getElementById("navigation");
+        navUl.addEventListener("click", function (event) {
+            if (event.target.className === "navigationText") {
+                handlers.setCurrentClass(event.target.id);
+            }
+        });
+        let classTitleDiv = document.getElementById("classTitle");
+        classTitleDiv.addEventListener("click", function (event) {
+            if (event.target.className === "classDeleteButton") {
+                handlers.deleteClass(event.target.id);
+            }
+            if (event.target.className === "classSaveNameButton") {
+                debugger;
+                handlers.classSaveName(event.target.id)
             }
         });
     },
