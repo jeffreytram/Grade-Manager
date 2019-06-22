@@ -1,0 +1,50 @@
+* {
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Segoe UI";
+}
+h1,h2,h3,h4{
+    font-variant: small-caps;
+}
+.navigation{
+    height: 100%;
+    width: 10%;
+    float: left;
+    background-color: rgb(30, 30, 30);
+    color: #ffffff;
+    padding: 0;
+    margin:0;
+}
+.addClass{
+    width: 100%;
+    height:10%;
+}
+ul{
+    margin:0;
+    padding:0;
+}
+li{
+    height: 10%;
+    padding: 10%;
+}
+.mainPane{
+    height: 100%;
+    width: 90%;
+    float: left;
+    background-color: #ffffff;
+}
+.mainContent{
+    height: 100%;
+    width: 60%;
+    float: left;
+    padding: 2%;
+}
+.instructions{
+    width: 34%;
+    float: right;
+    padding: 2%;
+    margin: 3%;
+    background-color: rgb(30, 30, 30);;
+    color: #ffffff;
+
+}

@@ -45,7 +45,15 @@ v1.0
     - [x] edit class name
     - [x] delete class
 
-[] planning layout
+[x] 6.22 planning layout
+[x] 6.22 creating responsive grid
+
+[] button class
+[] new background
+[] visible border between each class in the side navigation bar
+
+
+
 
 [] improve formatting, naming convention, efficency
 [] exploring session storing options (cookies)

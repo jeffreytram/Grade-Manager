@@ -108,7 +108,7 @@ let gradeManager = {
     classes: [],
     currentClass: "",
     setClassName: function (index) {
-        let headerElement = document.querySelector("h3")
+        let headerElement = document.querySelector("h2")
         this.classes[index].className = headerElement.innerText;
     },
     deleteClass: function (index) {
@@ -121,7 +121,7 @@ let gradeManager = {
         return false;
     },
     addClass: function () {
-        this.classes.push(new Class("class " + (this.classes.length + 1), [], false));
+        this.classes.push(new Class("Class " + (this.classes.length + 1), [], false));
         this.setCurrentClass(this.classes.length - 1);
     },
     setCurrentClass: function (index) {
@@ -192,7 +192,7 @@ let view = {
     clearAll: function () {
         let classUl = document.getElementById("navigation");
         classUl.innerHTML = "";
-        let classHeader = document.querySelector("h3");
+        let classHeader = document.querySelector("h2");
         classHeader.innerText = "";
         this.clearCurrentGradeDisplay;
     },
@@ -200,7 +200,7 @@ let view = {
         let classDiv = document.getElementById("classTitle");
         classDiv.innerHTML = "";
 
-        let classHeader = document.createElement("h3");
+        let classHeader = document.createElement("h2");
         classHeader.innerText = gradeManager.classes[gradeManager.currentClass].className;
         classHeader.contentEditable = true;
 
@@ -210,7 +210,7 @@ let view = {
         classSaveNameButton.id = +gradeManager.currentClass;
 
         let classDeleteButton = document.createElement("button");
-        classDeleteButton.textContent = "Delete";
+        classDeleteButton.textContent = "Delete Class";
         classDeleteButton.className = "classDeleteButton";
         classDeleteButton.id = gradeManager.currentClass;
 
