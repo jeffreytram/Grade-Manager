@@ -32,10 +32,6 @@ Class.prototype.forecastHelper = function (grade) {
     }
     return false;
 };
-//TODO: note need to fix/check contains negative function, incorporate this function into other methods that used containsNegative
-Class.prototype.toggleContainsNegative = function (booleanValue) {
-    this.containsNegative = booleanValue
-};
 Class.prototype.isNegative = function (grade, percent) {
     if (grade < 0 || percent < 0) {
         return true;
@@ -49,7 +45,6 @@ Class.prototype.calculateCurrentGrade = function () {
     let toggleForecastOn = false;
     this.containsNegative = false;
     gradeManager.classes[gradeManager.currentClass].gradeList.forEach(function (grade) {
-        //case 1: number percent and grade
         if (this.validInputHelper(grade.percent, grade.grade) && !this.forecastHelper(grade.grade)) {
             currentGrade += grade.percent * grade.grade / 100;
             completedPercent += grade.percent / 100;
@@ -113,8 +108,7 @@ let gradeManager = {
     classes: [],
     currentClass: "",
     setClassName: function (index) {
-        debugger;
-        headerElement = document.querySelector("h3")
+        let headerElement = document.querySelector("h3")
         this.classes[index].className = headerElement.innerText;
     },
     deleteClass: function (index) {
@@ -129,7 +123,6 @@ let gradeManager = {
     addClass: function () {
         this.classes.push(new Class("class " + (this.classes.length + 1), [], false));
         this.setCurrentClass(this.classes.length - 1);
-        //add a button to switch to that class
     },
     setCurrentClass: function (index) {
         this.currentClass = index;
@@ -154,7 +147,6 @@ let handlers = {
         else {
             view.clearAll();
         }
-        //TODO: set currently class to a valid one
     },
     setCurrentClass: function (index) {
         gradeManager.classes[gradeManager.currentClass].setAllGrades();
@@ -170,7 +162,6 @@ let handlers = {
         view.displayClass();
     },
     addGrade: function () {
-        //TODO: may need a currently selected view class index as paramter
         gradeManager.classes[gradeManager.currentClass].setAllGrades();
         gradeManager.classes[gradeManager.currentClass].addGrade();
         view.displayGrades();
@@ -196,7 +187,7 @@ let handlers = {
     }
 };
 
-//display of grades
+//visual aspects
 let view = {
     clearAll: function () {
         let classUl = document.getElementById("navigation");
@@ -228,7 +219,7 @@ let view = {
         classDiv.appendChild(classDeleteButton);
     },
     displayClass: function () {
-        classUl = document.getElementById("navigation");
+        let classUl = document.getElementById("navigation");
         classUl.innerHTML = "";
         gradeManager.classes.forEach(function (classNavBar, position) {
             let classLi = document.createElement("li");
@@ -242,8 +233,6 @@ let view = {
     displayGrades: function () {
         let gradesUl = document.getElementById("viewGrades");
         gradesUl.innerHTML = "";
-        //clear display
-        //TODO:
         gradeManager.classes[gradeManager.currentClass].gradeList.forEach(function (grade, position) {
             let gradesDiv = document.createElement("div");
 
@@ -282,7 +271,6 @@ let view = {
         });
     },
     setUpEventListeners: function () {
-        //add addgrade event listener
         let gradesUl = document.getElementById("viewGrades");
         gradesUl.addEventListener("click", function (event) {
             if (event.target.className === "gradeDeleteButton") {
