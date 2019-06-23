@@ -240,20 +240,20 @@ let view = {
             let gradeInputTitle = document.createElement("input");
             gradeInputTitle.value = grade.title;
             gradeInputTitle.type = "text";
-            gradeInputTitle.placeholder = "Grade Name " + (position + 1);
+            gradeInputTitle.placeholder = "Name " + (position + 1);
             gradeInputTitle.id = position + ".1";
 
             let gradeInputPercent = document.createElement("input");
             gradeInputPercent.value = grade.percent;
             gradeInputPercent.type = "number";
-            gradeInputPercent.placeholder = "Grade Weight " + (position + 1);
+            gradeInputPercent.placeholder = "Weight " + (position + 1);
             gradeInputPercent.id = position + ".2";
             gradeInputPercent.min = "0";
 
             let gradeInputGrade = document.createElement("input");
             gradeInputGrade.value = grade.grade;
             gradeInputGrade.type = "number";
-            gradeInputGrade.placeholder = "Grade Earned " + (position + 1);
+            gradeInputGrade.placeholder = "Grade " + (position + 1);
             gradeInputGrade.id = position + ".3";
             gradeInputGrade.min = "0";
 
