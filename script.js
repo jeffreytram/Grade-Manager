@@ -158,6 +158,7 @@ let handlers = {
     addClass: function () {
         gradeManager.addClass();
         view.setClassDisplayTitle(gradeManager.currentClass);
+        view.clearCurrentGradeDisplay();
         view.displayGrades();
         view.displayClass();
     },
@@ -289,7 +290,6 @@ let view = {
                 handlers.deleteClass(event.target.id);
             }
             if (event.target.className === "classSaveNameButton") {
-                debugger;
                 handlers.classSaveName(event.target.id)
             }
         });

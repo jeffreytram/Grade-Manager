@@ -48,12 +48,14 @@ v1.0
 [x] 6.22 planning layout
 [x] 6.22 creating responsive grid
 
-[] button class
+[x] 6.22 mobile css layout
+
+[] button css
 [] new background
 [] visible border between each class in the side navigation bar
-
-
-
+[] highlight class on hover
+[] highlight currently selected class
+[] limit number of classes to 9
 
 [] improve formatting, naming convention, efficency
 [] exploring session storing options (cookies)

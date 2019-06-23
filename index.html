@@ -11,26 +11,28 @@
     </head>
 
     <body>
+        
+        <div class="instructions">
+            <h1>Grade Manager</h1>
+            <p>Created by: Jeffrey Tram <br /><br />Click "Add Class" to get started! Then add grades to each of your
+                classes.<br /><br /> To switch between classes, click the class name in the bar. <br />To change the
+                name of your class, click the bolded name, and save your changes. <br />Enter the grade weight and grade
+                earned as a percent. For grades not received, leave the grade empty.</p>
+        </div>
         <div class="navigation">
-            <button onclick="handlers.addClass()" class="addClass">Add Class</button>
+            <div class="addClassDiv">
+                <button onclick="handlers.addClass()" class="addClass">Add Class</button>
+            </div>
             <ul id="navigation" style="list-style-type:none;">
             </ul>
         </div>
 
-        <div class="mainPane">
-            <div class="instructions">
-                <h1>Grade Manager</h1>
-                <p>Created by: Jeffrey Tram <br /><br />Click "Add Class" to get started! Add grades to each of your
-                    classes.<br /><br /> To switch between classes, click the class in the list below. <br />To change the
-                    name of your class, click the bolded name, and save your changes. <br />Enter the grade weight and grade
-                    earned as a percent. For grades not received, leave the grade empty.</p>
-            </div>
             <div class="mainContent">
                 <div id="classTitle">
                 </div>
 
                 <div>
-                    <br /><br /><br />
+                    <br /><br />
                     <button onclick="handlers.addGrade()">Add Grade</button>
                 </div>
                 <ul id="viewGrades" style="list-style-type:none;">
@@ -41,8 +43,6 @@
                 <p id="calculations">
                 </p>
             </div>
-
-        </div>
 
         <script src="script.js" async defer></script>
     </body>
