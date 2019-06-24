@@ -11,13 +11,18 @@
     </head>
 
     <body>
-        
+
         <div class="instructions">
             <h1>Grade Manager</h1>
-            <p>Created by: Jeffrey Tram <br /><br />Click "Add Class" to get started! Then add grades to each of your
-                classes.<br /><br /> To switch between classes, click the class name in the bar. <br />To change the
-                name of your class, click the bolded name, and save your changes. <br />Enter the grade weight and grade
-                earned as a percent. For grades not received, leave the grade empty.</p>
+            <p>Created by: Jeffrey Tram <br /><br />Click "Add Class" to get started! Then, add grades to each of your
+                classes.<br /><br /></p>
+            <ul class="instructionList">
+                <li>Click the class name in the bar to switch between classes.</li>
+                <li>Click the bolded class name to change the name, and save your changes.</li>
+                <li>Enter the weight and grade as a percent.</li>
+                <li>For grades not received, leave the grade empty.</li>
+            </ul>
+
         </div>
         <div class="navigation">
             <div class="addClassDiv">
@@ -27,22 +32,22 @@
             </ul>
         </div>
 
-            <div class="mainContent">
-                <div id="classTitle">
-                </div>
-
-                <div>
-                    <br /><br />
-                    <button onclick="handlers.addGrade()">Add Grade</button>
-                </div>
-                <ul id="viewGrades" style="list-style-type:none;">
-                </ul>
-                <div>
-                    <button onclick="handlers.calculateCurrentGrade()">Calculate</button>
-                </div>
-                <p id="calculations">
-                </p>
+        <div class="mainContent">
+            <div id="classTitle">
             </div>
+
+            <div>
+                <br /><br />
+                <button onclick="handlers.addGrade()">Add Grade</button>
+            </div>
+            <ul id="viewGrades" style="list-style-type:none;">
+            </ul>
+            <div>
+                <button onclick="handlers.calculateCurrentGrade()">Calculate</button>
+            </div>
+            <p id="calculations">
+            </p>
+        </div>
 
         <script src="script.js" async defer></script>
     </body>

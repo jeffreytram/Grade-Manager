@@ -300,11 +300,11 @@ let view = {
     },
     displayOverHundredWarning: function () {
         let gradesP = document.getElementById("calculations");
-        gradesP.innerHTML += "Note: The grade weight total exceeds 100%. Your class should include extra credit.<br/><br/>";
+        gradesP.innerHTML += "Note: The weight total exceeds 100%. Your class should include extra credit.<br/><br/>";
     },
     displayUnderHundredWarning: function () {
         let gradesP = document.getElementById("calculations");
-        gradesP.innerHTML += "Note: The grade weight total is below 100%.<br/><br/>";
+        gradesP.innerHTML += "Note: The weight total is below 100%.<br/><br/>";
     },
     displayNegativeWarning: function () {
         let gradesP = document.getElementById("calculations");

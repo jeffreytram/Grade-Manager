@@ -32,18 +32,21 @@ button {
     color: rgb(30, 30, 30);
     background-color: #ffffff;
 }
-input[type="number"]{
+
+input[type="number"] {
     width: 20%;
 }
-input[type="text"]{
+
+input[type="text"] {
     width: 30%;
 }
+
 ul {
     margin: 0;
     padding: 0;
 }
 
-li {
+.navigation>ul>li {
     width: 33%;
     display: inline-block;
 }
@@ -57,9 +60,17 @@ li {
 .instructions {
     width: 100%;
     float: right;
-    padding: 2%;
+    padding: 4%;
     background-color: rgb(30, 30, 30);
     color: #ffffff;
+}
+
+.instructionList {
+    display: inline-block;
+}
+
+.instructionList>li {
+    text-align: left;
 }
 
 @media (min-width:800px) {
@@ -104,23 +115,23 @@ li {
         background-color: rgb(30, 30, 30);
         color: #ffffff;
     }
-    input[type="number"]{
+    input[type="number"] {
         width: 20%;
     }
-    input[type="text"]{
+    input[type="text"] {
         width: 30%;
     }
     ul {
         margin: 0;
         padding: 0;
     }
-    li {
+    .navigation>ul>li {
         height: 10%;
         width: 100%;
         display: block;
         padding: 10%;
     }
-    li:hover, .addClass:hover {
+    .navigation>ul>li:hover, .addClass:hover {
         background-color: #ffffff;
         color: rgb(30, 30, 30);
     }
@@ -133,7 +144,10 @@ li {
     .instructions {
         width: 34%;
         float: right;
-        padding: 2%;
+        padding-left: 3%;
+        padding-right: 3%;
+        padding-top: 2%;
+        padding-bottom: 2%;
         margin: 3%;
         background-color: rgb(30, 30, 30);
         ;

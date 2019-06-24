@@ -53,7 +53,10 @@ v1.0
 [x] 6.23 highlight class on hover
 [x] 6.23 window scaling improvements
     -improved view on mobile devices and smaller windows
+[x] 6.23 revised description layout
 
+[] add class more visible on smaller windows
+[] improve mobile navigation
 [] new background
 [] visible border between each class in the side navigation bar
 [] highlight currently selected class
