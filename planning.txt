@@ -55,11 +55,18 @@ v1.0
     -improved view on mobile devices and smaller windows
 [x] 6.23 revised description layout
 
-[] add class more visible on smaller windows
-[] improve mobile navigation
-[] new background
-[] visible border between each class in the side navigation bar
+[x] 6.24 add class more visible on smaller windows
+[x] 6.24 new background
+[x] 6.24 navigation fixed and has a scroll bar for overflow
+
+[] bottom padding for overflow in main content
+    -when height > 100%, padding doesnt include additional scroll height
+[] fix  issue with desktop navigation when window shrink y axix
+[] navigation separator
 [] highlight currently selected class
+    -if currentSelected class
+        -change properties?
+
 [] limit number of classes to 9
 
 [] improve formatting, naming convention, efficency

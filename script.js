@@ -282,6 +282,8 @@ let view = {
         navUl.addEventListener("click", function (event) {
             if (event.target.className === "navigationText") {
                 handlers.setCurrentClass(event.target.id);
+                console.log(event.target.className);
+                //event.target.className += " active";
             }
         });
         let classTitleDiv = document.getElementById("classTitle");
