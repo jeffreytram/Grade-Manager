@@ -120,6 +120,19 @@ let gradeManager = {
         }
         return false;
     },
+    findNextClassHelper: function (index){
+        // 1, 2, 3 ,4 ,5
+        //delete 3
+        //1, 2, 3, 5
+        //delete 3
+        // 1, 2, 3
+        //if there is a class afterwards
+        if(gradeManager.classes.length>index){
+            return index;
+        }
+        //no class afterwards, has class before
+        return index-1;
+    },
     addClass: function () {
         this.classes.push(new Class("Class " + (this.classes.length + 1), [], false));
         this.setCurrentClass(this.classes.length - 1);
@@ -138,11 +151,12 @@ let handlers = {
     deleteClass: function (index) {
         gradeManager.deleteClass(index);
         if (gradeManager.existValidClassHelper()) {
-            gradeManager.setCurrentClass(0);
+            gradeManager.setCurrentClass(gradeManager.findNextClassHelper(index));
             view.clearCurrentGradeDisplay();
             view.setClassDisplayTitle(gradeManager.currentClass);
             view.displayGrades();
             view.displayClass();
+            view.displayNavHighlight();
         }
         else {
             view.clearAll();
@@ -154,6 +168,7 @@ let handlers = {
         gradeManager.setCurrentClass(index);
         view.setClassDisplayTitle(gradeManager.currentClass);
         view.displayGrades();
+        view.displayNavHighlight();
     },
     addClass: function () {
         gradeManager.addClass();
@@ -161,6 +176,7 @@ let handlers = {
         view.clearCurrentGradeDisplay();
         view.displayGrades();
         view.displayClass();
+        view.displayNavHighlight();
     },
     addGrade: function () {
         gradeManager.classes[gradeManager.currentClass].setAllGrades();
@@ -284,15 +300,6 @@ let view = {
                 handlers.setCurrentClass(event.target.id);
             }
         });
-        // let navLi = navUl.getElementsByClassName("navigationText");
-        // debugger;
-        // navLi.forEach(function(liElement, position){
-        //     liElement.addEventListener("click", function(){
-        //         let active = document.getElementsByClassName("active");
-        //         active[0].className = current[0].className.replace(" active", "");
-        //         liElement += " active";
-        //     })
-        // });
         
         let classTitleDiv = document.getElementById("classTitle");
         classTitleDiv.addEventListener("click", function (event) {
@@ -303,6 +310,15 @@ let view = {
                 handlers.classSaveName(event.target.id)
             }
         });
+    },
+    displayNavHighlight: function(){
+        let navUl = document.getElementById("navigation");
+        let navLi = navUl.getElementsByClassName("navigationText");
+        let active = document.getElementsByClassName("active");
+        if(active.length>0){
+            active[0].className = active[0].className.replace(" active", "");
+        }
+        navLi[gradeManager.currentClass].className += " active";
     },
     displayCurrentGrade: function (cur, low, high) {
         let gradesP = document.getElementById("calculations");

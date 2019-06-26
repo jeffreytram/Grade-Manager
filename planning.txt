@@ -59,19 +59,15 @@ v1.0
 [x] 6.24 new background
 [x] 6.24 navigation fixed and has a scroll bar for overflow
 
-[x] add class on desktop more distinct
+[x] 6.25 add class on desktop more distinct
 
-[] eliminate html <br>
+[x] 6.26 current class highlighted in the nav bar
+[x] 6.26 current class changes to closest class after deletion
+
+[] limit number input to 3 numbers
+
 [] bottom padding for overflow in main content
     -when height > 100%, padding doesnt include additional scroll height
-[] fix  issue with desktop navigation when window shrink y axix
-[] navigation separator
-[] highlight currently selected class
-    -if currentSelected class
-        -change properties?
-
-[] limit number of classes to 9
-
 [] improve formatting, naming convention, efficency
 [] exploring session storing options (cookies)
 [] support different grading scale. (rather than out of 100%, out of x amount of points)

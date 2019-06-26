@@ -57,6 +57,10 @@ ul {
     width: 33%;
     display: inline-block;
 }
+.active {
+    background-color: #ffffff;
+    color: rgb(30, 30, 30);
+}
 
 .mainContent {
     width: 100%;
@@ -129,6 +133,7 @@ ul {
     input[type="number"] {
         width: 20%;
         padding: .3% 2%;
+        max-
     }
     input[type="text"] {
         width: 30%;
