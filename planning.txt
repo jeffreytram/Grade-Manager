@@ -59,6 +59,9 @@ v1.0
 [x] 6.24 new background
 [x] 6.24 navigation fixed and has a scroll bar for overflow
 
+[x] add class on desktop more distinct
+
+[] eliminate html <br>
 [] bottom padding for overflow in main content
     -when height > 100%, padding doesnt include additional scroll height
 [] fix  issue with desktop navigation when window shrink y axix

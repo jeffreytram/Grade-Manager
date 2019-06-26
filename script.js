@@ -1,5 +1,5 @@
-function Class(className, gradeList, containsNegative) {
-    this.className = className;
+function Class(classTitle, gradeList, containsNegative) {
+    this.classTitle = classTitle;
     this.gradeList = gradeList;
     this.containsNegative = containsNegative;
 }
@@ -109,7 +109,7 @@ let gradeManager = {
     currentClass: "",
     setClassName: function (index) {
         let headerElement = document.querySelector("h2")
-        this.classes[index].className = headerElement.innerText;
+        this.classes[index].classTitle = headerElement.innerText;
     },
     deleteClass: function (index) {
         this.classes.splice(index, 1);
@@ -202,7 +202,7 @@ let view = {
         classDiv.innerHTML = "";
 
         let classHeader = document.createElement("h2");
-        classHeader.innerText = gradeManager.classes[gradeManager.currentClass].className;
+        classHeader.innerText = gradeManager.classes[gradeManager.currentClass].classTitle;
         classHeader.contentEditable = true;
 
         let classSaveNameButton = document.createElement("button");
@@ -225,7 +225,7 @@ let view = {
         gradeManager.classes.forEach(function (classNavBar, position) {
             let classLi = document.createElement("li");
             classLi.className = "navigationText";
-            classLi.innerHTML = classNavBar.className;
+            classLi.innerHTML = classNavBar.classTitle;
             classLi.id = position;
 
             classUl.appendChild(classLi);
@@ -282,10 +282,18 @@ let view = {
         navUl.addEventListener("click", function (event) {
             if (event.target.className === "navigationText") {
                 handlers.setCurrentClass(event.target.id);
-                console.log(event.target.className);
-                //event.target.className += " active";
             }
         });
+        // let navLi = navUl.getElementsByClassName("navigationText");
+        // debugger;
+        // navLi.forEach(function(liElement, position){
+        //     liElement.addEventListener("click", function(){
+        //         let active = document.getElementsByClassName("active");
+        //         active[0].className = current[0].className.replace(" active", "");
+        //         liElement += " active";
+        //     })
+        // });
+        
         let classTitleDiv = document.getElementById("classTitle");
         classTitleDiv.addEventListener("click", function (event) {
             if (event.target.className === "classDeleteButton") {
@@ -298,7 +306,7 @@ let view = {
     },
     displayCurrentGrade: function (cur, low, high) {
         let gradesP = document.getElementById("calculations");
-        gradesP.innerHTML += "Current Grade: " + cur.toFixed(2) + "%<br/><br/>Lowest Possible Grade: " + low.toFixed(2) + "%<br/>Highest Possible Grade: " + high.toFixed(2) + "%";
+        gradesP.innerHTML += "Current Grade: " + cur.toFixed(2) + "%<br/><br/>Lowest Possible Grade: " + low.toFixed(2) + "%<br/>Highest Possible Grade: " + high.toFixed(2) + "%<br/><br/><br/><br/>";
     },
     displayOverHundredWarning: function () {
         let gradesP = document.getElementById("calculations");
@@ -318,4 +326,5 @@ let view = {
     }
 };
 
+//initialization
 view.setUpEventListeners();
