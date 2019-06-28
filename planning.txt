@@ -63,15 +63,21 @@ v1.0
 
 [x] 6.26 current class highlighted in the nav bar
 [x] 6.26 current class changes to closest class after deletion
+[x] 6.26 fixed issue with save button removing highlight
+
+[x] 6.27 save data to local storage
+    - [x] Debugging issues
+        - buttons dont work until add class pressed
+        - add class creates class object, so issue with reading localstorage
+        - when reading local storage, classes array in gradeManager not assigned properly
+    - updates after every change
+
 
 [] limit number input to 3 numbers
-
 [] bottom padding for overflow in main content
     -when height > 100%, padding doesnt include additional scroll height
 [] improve formatting, naming convention, efficency
-[] exploring session storing options (cookies)
 [] support different grading scale. (rather than out of 100%, out of x amount of points)
-[] documentation/help/notes page
-    -assumes highest possible grade is 100
-    -other assumptions made if any
-    -revising description/instructions
+[] displaying average grade required in remaining grade to get to next milestone/grade letter
+    - chart 
+

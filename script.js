@@ -121,11 +121,6 @@ let gradeManager = {
         return false;
     },
     findNextClassHelper: function (index){
-        // 1, 2, 3 ,4 ,5
-        //delete 3
-        //1, 2, 3, 5
-        //delete 3
-        // 1, 2, 3
         //if there is a class afterwards
         if(gradeManager.classes.length>index){
             return index;
@@ -139,6 +134,31 @@ let gradeManager = {
     },
     setCurrentClass: function (index) {
         this.currentClass = index;
+    },
+    readStorage: function(tempGManager){
+        tempGManager.classes.forEach(function(tempClass, positon){
+            this.classes.push(new Class(tempClass.classTitle, tempClass.gradeList, tempClass.containsNegative));
+        }, this);
+        this.currentClass=tempGManager.currentClass;
+        //display
+        view.setClassDisplayTitle(gradeManager.currentClass);
+        view.clearCurrentGradeDisplay();
+        view.displayGrades();
+        view.displayClass();
+        view.displayNavHighlight();
+    },
+    checkStorage: function(){
+        let storage = window.localStorage;
+        //if storage exists
+        if(storage.getItem("gManager")){
+            let tempGManager = JSON.parse(storage.getItem("gManager"));
+            this.readStorage(tempGManager);
+        }
+    },
+    setStorage: function(){
+        let storage = window.localStorage;
+        let item = JSON.stringify(gradeManager);
+        storage.setItem("gManager", item);
     }
 }
 
@@ -147,6 +167,8 @@ let handlers = {
     classSaveName: function (index) {
         gradeManager.setClassName(index);
         view.displayClass();
+        view.displayNavHighlight();
+        gradeManager.setStorage();
     },
     deleteClass: function (index) {
         gradeManager.deleteClass(index);
@@ -157,6 +179,7 @@ let handlers = {
             view.displayGrades();
             view.displayClass();
             view.displayNavHighlight();
+            gradeManager.setStorage();
         }
         else {
             view.clearAll();
@@ -169,6 +192,7 @@ let handlers = {
         view.setClassDisplayTitle(gradeManager.currentClass);
         view.displayGrades();
         view.displayNavHighlight();
+        gradeManager.setStorage();
     },
     addClass: function () {
         gradeManager.addClass();
@@ -177,16 +201,19 @@ let handlers = {
         view.displayGrades();
         view.displayClass();
         view.displayNavHighlight();
+        gradeManager.setStorage();
     },
     addGrade: function () {
         gradeManager.classes[gradeManager.currentClass].setAllGrades();
         gradeManager.classes[gradeManager.currentClass].addGrade();
         view.displayGrades();
+        gradeManager.setStorage();
     },
     deleteGrade: function (position) {
         gradeManager.classes[gradeManager.currentClass].setAllGrades();
         gradeManager.classes[gradeManager.currentClass].deleteGrade(position);
         view.displayGrades();
+        gradeManager.setStorage();
     },
     calculateCurrentGrade: function () {
         view.clearCurrentGradeDisplay();
@@ -194,6 +221,7 @@ let handlers = {
         let currentGrade = gradeManager.classes[gradeManager.currentClass].calculateCurrentGrade();
         let lowestGrade = gradeManager.classes[gradeManager.currentClass].calculateLowestGrade();
         let highestGrade = gradeManager.classes[gradeManager.currentClass].calculateHighestGrade();
+        gradeManager.setStorage();
         if (gradeManager.classes[gradeManager.currentClass].containsNegative) {
             view.displayNegativeWarning();
         }
@@ -341,6 +369,7 @@ let view = {
         gradesP.innerHTML = "";
     }
 };
+
 
 //initialization
 view.setUpEventListeners();
