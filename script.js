@@ -107,6 +107,15 @@ Class.prototype.calculateHighestGrade = function () {
 let gradeManager = {
     classes: [],
     currentClass: "",
+    notes: "",
+    setNotes: function(){
+        let textAreaElement = document.querySelector("textarea");
+        this.notes = textAreaElement.value;
+    },
+    readNotes: function(){
+        let textAreaElement = document.querySelector("textarea");
+        textAreaElement.value = this.notes;
+    },
     setClassName: function (index) {
         let headerElement = document.querySelector("h2")
         this.classes[index].classTitle = headerElement.innerText;
@@ -140,6 +149,8 @@ let gradeManager = {
             this.classes.push(new Class(tempClass.classTitle, tempClass.gradeList, tempClass.containsNegative));
         }, this);
         this.currentClass=tempGManager.currentClass;
+        this.notes = tempGManager.notes;
+        this.readNotes();
         //display
         view.setClassDisplayTitle(gradeManager.currentClass);
         view.clearCurrentGradeDisplay();
@@ -166,11 +177,13 @@ let gradeManager = {
 let handlers = {
     classSaveName: function (index) {
         gradeManager.setClassName(index);
+        gradeManager.setNotes();
         view.displayClass();
         view.displayNavHighlight();
         gradeManager.setStorage();
     },
     deleteClass: function (index) {
+        gradeManager.setNotes();
         gradeManager.deleteClass(index);
         if (gradeManager.existValidClassHelper()) {
             gradeManager.setCurrentClass(gradeManager.findNextClassHelper(index));
@@ -186,6 +199,7 @@ let handlers = {
         }
     },
     setCurrentClass: function (index) {
+        gradeManager.setNotes();
         gradeManager.classes[gradeManager.currentClass].setAllGrades();
         view.clearCurrentGradeDisplay();
         gradeManager.setCurrentClass(index);
@@ -196,6 +210,7 @@ let handlers = {
     },
     addClass: function () {
         gradeManager.addClass();
+        gradeManager.setNotes();
         view.setClassDisplayTitle(gradeManager.currentClass);
         view.clearCurrentGradeDisplay();
         view.displayGrades();
@@ -206,17 +221,20 @@ let handlers = {
     addGrade: function () {
         gradeManager.classes[gradeManager.currentClass].setAllGrades();
         gradeManager.classes[gradeManager.currentClass].addGrade();
+        gradeManager.setNotes();
         view.displayGrades();
         gradeManager.setStorage();
     },
     deleteGrade: function (position) {
         gradeManager.classes[gradeManager.currentClass].setAllGrades();
         gradeManager.classes[gradeManager.currentClass].deleteGrade(position);
+        gradeManager.setNotes();
         view.displayGrades();
         gradeManager.setStorage();
     },
     calculateCurrentGrade: function () {
         view.clearCurrentGradeDisplay();
+        gradeManager.setNotes();
         gradeManager.classes[gradeManager.currentClass].setAllGrades();
         let currentGrade = gradeManager.classes[gradeManager.currentClass].calculateCurrentGrade();
         let lowestGrade = gradeManager.classes[gradeManager.currentClass].calculateLowestGrade();
@@ -350,7 +368,7 @@ let view = {
     },
     displayCurrentGrade: function (cur, low, high) {
         let gradesP = document.getElementById("calculations");
-        gradesP.innerHTML += "Current Grade: " + cur.toFixed(2) + "%<br/><br/>Lowest Possible Grade: " + low.toFixed(2) + "%<br/>Highest Possible Grade: " + high.toFixed(2) + "%<br/><br/><br/><br/>";
+        gradesP.innerHTML += "Current Grade: " + cur.toFixed(2) + "%<br/><br/>Lowest Possible Grade: " + low.toFixed(2) + "%<br/>Highest Possible Grade: " + high.toFixed(2) + "%";
     },
     displayOverHundredWarning: function () {
         let gradesP = document.getElementById("calculations");

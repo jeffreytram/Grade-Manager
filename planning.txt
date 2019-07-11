@@ -75,7 +75,14 @@ v1.0
 [x] 7.09 responsive text, improved scaling view
 [x] 7.09 removed duplicate css
 
-[] add icons
+[x] 7.10 added icon for add class
+[x] 7.10 note section
+    - [x] desktop css
+    - [x] mobile css
+    - [x] saving local storage
+
+[] grouping together saving process, other repeated tasks
+[] save all changes button
 
 [] limit number input to 3 numbers
 [] bottom padding for overflow in main content
