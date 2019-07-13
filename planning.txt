@@ -81,12 +81,11 @@ v1.0
     - [x] mobile css
     - [x] saving local storage
 
+[x] 7.11 Save Name and add class button sets all grades
+
 [] grouping together saving process, other repeated tasks
-[] save all changes button
 
 [] limit number input to 3 numbers
-[] bottom padding for overflow in main content
-    -when height > 100%, padding doesnt include additional scroll height
 [] improve formatting, naming convention, efficency
 [] support different grading scale. (rather than out of 100%, out of x amount of points)
 [] displaying average grade required in remaining grade to get to next milestone/grade letter

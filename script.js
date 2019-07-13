@@ -175,7 +175,13 @@ let gradeManager = {
 
 //button handlers
 let handlers = {
+    /*
+    setnotes runs after every change
+    setallgrades run after every change
+    setstorage runs after every change AT END
+    */
     classSaveName: function (index) {
+        gradeManager.classes[gradeManager.currentClass].setAllGrades();
         gradeManager.setClassName(index);
         gradeManager.setNotes();
         view.displayClass();
@@ -183,8 +189,8 @@ let handlers = {
         gradeManager.setStorage();
     },
     deleteClass: function (index) {
-        gradeManager.setNotes();
         gradeManager.deleteClass(index);
+        gradeManager.setNotes();
         if (gradeManager.existValidClassHelper()) {
             gradeManager.setCurrentClass(gradeManager.findNextClassHelper(index));
             view.clearCurrentGradeDisplay();
@@ -196,6 +202,7 @@ let handlers = {
         }
         else {
             view.clearAll();
+            gradeManager.setStorage();
         }
     },
     setCurrentClass: function (index) {
@@ -209,6 +216,7 @@ let handlers = {
         gradeManager.setStorage();
     },
     addClass: function () {
+        gradeManager.classes[gradeManager.currentClass].setAllGrades();
         gradeManager.addClass();
         gradeManager.setNotes();
         view.setClassDisplayTitle(gradeManager.currentClass);
@@ -252,6 +260,8 @@ let handlers = {
 
 //visual aspects
 let view = {
+    //resets to empty list
+    //used when list reduced to empty list
     clearAll: function () {
         let classUl = document.getElementById("navigation");
         classUl.innerHTML = "";
