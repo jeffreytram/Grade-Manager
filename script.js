@@ -108,11 +108,11 @@ let gradeManager = {
     classes: [],
     currentClass: "",
     notes: "",
-    setNotes: function(){
+    setNotes: function () {
         let textAreaElement = document.querySelector("textarea");
         this.notes = textAreaElement.value;
     },
-    readNotes: function(){
+    readNotes: function () {
         let textAreaElement = document.querySelector("textarea");
         textAreaElement.value = this.notes;
     },
@@ -129,13 +129,13 @@ let gradeManager = {
         }
         return false;
     },
-    findNextClassHelper: function (index){
+    findNextClassHelper: function (index) {
         //if there is a class afterwards
-        if(gradeManager.classes.length>index){
+        if (gradeManager.classes.length > index) {
             return index;
         }
         //no class afterwards, has class before
-        return index-1;
+        return index - 1;
     },
     addClass: function () {
         this.classes.push(new Class("Class " + (this.classes.length + 1), [], false));
@@ -144,11 +144,11 @@ let gradeManager = {
     setCurrentClass: function (index) {
         this.currentClass = index;
     },
-    readStorage: function(tempGManager){
-        tempGManager.classes.forEach(function(tempClass, positon){
+    readStorage: function (tempGManager) {
+        tempGManager.classes.forEach(function (tempClass, positon) {
             this.classes.push(new Class(tempClass.classTitle, tempClass.gradeList, tempClass.containsNegative));
         }, this);
-        this.currentClass=tempGManager.currentClass;
+        this.currentClass = tempGManager.currentClass;
         this.notes = tempGManager.notes;
         this.readNotes();
         //display
@@ -158,15 +158,15 @@ let gradeManager = {
         view.displayClass();
         view.displayNavHighlight();
     },
-    checkStorage: function(){
+    checkStorage: function () {
         let storage = window.localStorage;
         //if storage exists
-        if(storage.getItem("gManager")){
+        if (storage.getItem("gManager")) {
             let tempGManager = JSON.parse(storage.getItem("gManager"));
             this.readStorage(tempGManager);
         }
     },
-    setStorage: function(){
+    setStorage: function () {
         let storage = window.localStorage;
         let item = JSON.stringify(gradeManager);
         storage.setItem("gManager", item);
@@ -216,7 +216,9 @@ let handlers = {
         gradeManager.setStorage();
     },
     addClass: function () {
-        gradeManager.classes[gradeManager.currentClass].setAllGrades();
+        if (gradeManager.classes.length > 0) {
+            gradeManager.classes[gradeManager.currentClass].setAllGrades();
+        }
         gradeManager.addClass();
         gradeManager.setNotes();
         view.setClassDisplayTitle(gradeManager.currentClass);
@@ -356,7 +358,7 @@ let view = {
                 handlers.setCurrentClass(event.target.id);
             }
         });
-        
+
         let classTitleDiv = document.getElementById("classTitle");
         classTitleDiv.addEventListener("click", function (event) {
             if (event.target.className === "classDeleteButton") {
@@ -367,11 +369,11 @@ let view = {
             }
         });
     },
-    displayNavHighlight: function(){
+    displayNavHighlight: function () {
         let navUl = document.getElementById("navigation");
         let navLi = navUl.getElementsByClassName("navigationText");
         let active = document.getElementsByClassName("active");
-        if(active.length>0){
+        if (active.length > 0) {
             active[0].className = active[0].className.replace(" active", "");
         }
         navLi[gradeManager.currentClass].className += " active";

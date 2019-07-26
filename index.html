@@ -1,57 +1,58 @@
 <!DOCTYPE <!DOCTYPE html>
 <html>
 
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Grade Manager</title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="style.css">
-    </head>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Grade Manager</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="style.css">
+</head>
 
-    <body onload="gradeManager.checkStorage()">
-        <div class="instructions">
-            <h1>Grade Manager</h1>
-            <p>Created by: Jeffrey Tram <br /><br />Click "Add Class" to get started! Then, add grades to each of your
-                classes.<br /><br /></p>
-            <ul class="instructionList">
-                <li>Enter the weight and grade as a percent</li>
-                <li>Switch between classes by clicking the class name in the bar</li>
-                <li>Change the class name by clicking the bolded name, and saving the name</li>
-                <li>For grades not received, leave the grade empty.</li>
-                <li>Save all other changes by clicking any button or switching between classes.</li>
-            </ul>
+<body onload="gradeManager.checkStorage()">
+    <div class="instructions">
+        <h1>Grade Manager</h1>
+        <p>Created by: Jeffrey Tram <br /><br />Click "Add Class" to get started! Then, add grades to each of your
+            classes.<br /><br /></p>
+        <ul class="instructionList">
+            <li>Enter the weight and grade as a percent</li>
+            <li>Switch between classes by clicking the class name in the bar</li>
+            <li>Change the class name by clicking the bolded name, and saving the name</li>
+            <li>For grades not received, leave the grade empty.</li>
+            <li>Save all other changes by clicking any button or switching between classes.</li>
+        </ul>
+    </div>
+    <div class="navigation">
+        <div class="addClassDiv">
+            <button onclick="handlers.addClass()" class="addClass"><img class="icon" src="images/plus-icon.png">Add
+                Class</button>
         </div>
-        <div class="navigation">
-            <div class="addClassDiv">
-                <button onclick="handlers.addClass()" class="addClass"><img class="icon" src="images/plus-icon.png">Add Class</button>
-            </div>
-            <ul id="navigation" style="list-style-type:none;">
-            </ul>
+        <ul id="navigation" style="list-style-type:none;">
+        </ul>
+    </div>
+
+    <div class="mainContent">
+        <div id="classTitle">
         </div>
 
-        <div class="mainContent">
-            <div id="classTitle">
-            </div>
-
-            <div>
-                <br /><br />
-                <button onclick="handlers.addGrade()">Add Grade</button>
-            </div>
-            <ul id="viewGrades" style="list-style-type:none;">
-            </ul>
-            <div>
-                <button onclick="handlers.calculateCurrentGrade()">Calculate</button>
-            </div>
-            <p id="calculations">
-            </p>
+        <div>
+            <br /><br />
+            <button onclick="handlers.addGrade()">Add Grade</button>
         </div>
-        <div class="notesDiv">
-            <label for="notes">General Notes:</label><br/>
-            <textarea id="notes"></textarea>
+        <ul id="viewGrades" style="list-style-type:none;">
+        </ul>
+        <div>
+            <button onclick="handlers.calculateCurrentGrade()">Calculate</button>
         </div>
-        <script src="script.js" async defer></script>
-    </body>
+        <p id="calculations">
+        </p>
+    </div>
+    <div class="notesDiv">
+        <label for="notes">General Notes:</label><br />
+        <textarea id="notes"></textarea>
+    </div>
+    <script src="script.js" async defer></script>
+</body>
 
 </html>

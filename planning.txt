@@ -83,7 +83,8 @@ v1.0
 
 [x] 7.11 Save Name and add class button sets all grades
 
-[x] 7.26 debug app issue
+[x] 7.26 debug application issue
+    - issue with add class with no classes
 
 [] grouping together saving process, other repeated tasks
 
