@@ -83,7 +83,18 @@ v1.0
 
 [x] 7.11 Save Name and add class button sets all grades
 
+[x] 7.26 debug app issue
+
 [] grouping together saving process, other repeated tasks
+
+[] due date for assignments
+[] home/overview page
+-upcoming assignments for all classes sorted by due date
+[] class pages
+-remove grade manager intro, intro only in home/overview page
+-replace intro with upcoming assignments
+[] reminder for upcoming assignments
+-text within certain intervals
 
 [] limit number input to 3 numbers
 [] improve formatting, naming convention, efficency
