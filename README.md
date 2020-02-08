@@ -1,6 +1,6 @@
 <h2>Grade Manager - https://jeffreytram.github.io/Grade-Manager/</h2>
 Created by Jeffrey Tram <br/>
-Project Duration: 6.19.19 - Present<br/><br/>
+Project Duration: 06.2019 - 07.2019
 Track your progress in all of your classes as the semester rolls!<br/><br/>
 Features:
 <ul>
