@@ -14,6 +14,9 @@ export default class GradeList extends React.Component {
                         weight={grade.weight}
                         score={grade.score}
                         onDelete={this.props.onDelete}
+                        updateName={this.props.updateName}
+                        updateWeight={this.props.updateWeight}
+                        updateScore={this.props.updateScore}
                     />
                 })}
             </ul>

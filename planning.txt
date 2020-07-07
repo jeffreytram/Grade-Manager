@@ -92,6 +92,7 @@ v1.0
 7.6.20
 - react refactoring
     - finished add grade and delete grade 
+    - finished grade updating and calculation
 
 [] planning subsection addition
 - displaySubclass
