@@ -86,20 +86,46 @@ v1.0
 [x] 7.26 debug application issue
     - issue with add class with no classes
 
-[] grouping together saving process, other repeated tasks
+8.24 [x] add pointer hover on clickables
 
-[] due date for assignments
+
+7.6.20
+- react refactoring
+    - finished add grade and delete grade 
+
+[] planning subsection addition
+- displaySubclass
+    - shows subclass buttons
+        - add sub grade
+        - remove sub grade
+- sub grade
+    - consists of name, weight, grade
+    - basically like grade function/class
+- calculate subsection grade
+- how to reuse current grade class?
+
+
+
+[] grade subsections - instead of having to create section for each indiv hw, quiz, etc.
+- collapsable
+- calculates grade of subsection
+- default equal weight distribution, can also manual input
+
+[] warning when trying to save name, delete class, add grade, and calculate with no classes
+    - prompt user to add class first
+[] remove class functions when no classes, add class functions when class
 [] home/overview page
--upcoming assignments for all classes sorted by due date
+    - upcoming assignments for all classes sorted by due date
 [] class pages
--remove grade manager intro, intro only in home/overview page
--replace intro with upcoming assignments
-[] reminder for upcoming assignments
--text within certain intervals
-
-[] limit number input to 3 numbers
-[] improve formatting, naming convention, efficency
+    - remove grade manager intro, intro only in home/overview page
+    - replace intro with upcoming assignments
+[] due date for assignments
 [] support different grading scale. (rather than out of 100%, out of x amount of points)
+[] improve formatting, naming convention, efficency
+[] reminder for upcoming assignments
+    - text within certain intervals
 [] displaying average grade required in remaining grade to get to next milestone/grade letter
     - chart 
 
+[] limit number input to 3 numbers
+- Issues: problem with not being able to limit inputs to 3 digits
