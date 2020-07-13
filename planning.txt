@@ -94,6 +94,12 @@ v1.0
     - finished add grade and delete grade 
     - finished grade updating and calculation
 
+7.8.20
+- removed old files and moved the react application 1 directory up
+
+7.9.20
+- adding multiple class functionality
+
 [] planning subsection addition
 - displaySubclass
     - shows subclass buttons
@@ -130,3 +136,11 @@ v1.0
 
 [] limit number input to 3 numbers
 - Issues: problem with not being able to limit inputs to 3 digits
+
+
+
+Resources:
+Deplyoing React App: https://create-react-app.dev/docs/deployment/#github-pages-https-pagesgithubcom
+
+child state and parent state: https://stackoverflow.com/questions/52629386/react-passing-child-state-to-parent-state
+https://stackoverflow.com/questions/54445040/whats-the-best-alternative-to-update-nested-react-state-property-with-setstate

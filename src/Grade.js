@@ -6,21 +6,15 @@ export default class Grade extends React.Component {
     return (
       <div>
           <input placeholder="Name" 
-            type="text"
-            value={this.props.name} 
-            onChange={(event) => this.props.updateName(this.props.id, event.target.value)}>
+            type="text">
           </input>
           <input placeholder="Weight" 
-            type="number"
-            value={this.props.weight}
-            onChange={(event) => this.props.updateWeight(this.props.id, event.target.value)}>
+            type="number">
           </input>
           <input placeholder="Score" 
-            type="number"
-            value={this.props.score}
-            onChange={(event) => this.props.updateScore(this.props.id, event.target.value)}>
+            type="number">
           </input>
-          <button onClick={() => this.props.onDelete(this.props.id)}>Delete</button>
+          <button onClick={() => this.props.deleteGrade(this.props.id)}>Delete</button>
       </div>
     )
   }
