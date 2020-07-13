@@ -1,8 +1,7 @@
 import React from "react";
 import "./Grade.css"
 
-export default class Grade extends React.Component {
-  render(){
+export default function Grade(props) {
     return (
       <div>
           <input placeholder="Name" 
@@ -14,8 +13,7 @@ export default class Grade extends React.Component {
           <input placeholder="Score" 
             type="number">
           </input>
-          <button onClick={() => this.props.deleteGrade(this.props.id)}>Delete</button>
+          <button onClick={() => props.deleteGrade(props.classID, props.gradeID)}>Delete</button>
       </div>
     )
-  }
 }

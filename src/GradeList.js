@@ -2,19 +2,18 @@ import React from "react";
 import Grade from "./Grade"
 import "./GradeList.css"
 
-export default class GradeList extends React.Component {
-  render(){
+export default function GradeList(props) {
     return (
       <div>
         <ul>
-          {this.props.gradeList.map(grade => {
+          {props.gradeList.map(grade => {
             return <Grade 
-              deleteGrade={this.props.deleteGrade}
-              id={grade.id}
+              classID={props.classID}
+              deleteGrade={props.deleteGrade}
+              gradeID={grade.id}
             />
           })}
         </ul>
       </div>
     )
-  }
 }

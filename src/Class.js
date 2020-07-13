@@ -2,35 +2,18 @@ import React from "react";
 import GradeList from "./GradeList"
 import "./Class.css"
 
-let id = 0
-
-export default class Class extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      gradeList: [],
-      classGrade: 0
-    }
-  }
-  addGrade() {
-    this.setState({gradeList: [...this.state.gradeList, {id: id++, name: "", weight: "", score: "" }]})
-  }
-  deleteGrade(id) {
-    this.setState({
-      gradeList: this.state.gradeList.filter(grade => grade.id !== id)
-    })
-  }  
-  render(){
+export default function Class(props) {
+    const {id, name, grade, gradeList} = props.data
     return (
       <div>
-        <h3>Class Name</h3>
-        <button onClick={() => this.addGrade()}>Add Grade</button>
-          <GradeList 
-            gradeList={this.state.gradeList}
-            deleteGrade={(id) => this.deleteGrade(id)}
+        <h3>{name}</h3>
+        <button onClick={() => props.addGrade(id)}>Add Grade</button>
+          <GradeList
+            classID={id} 
+            gradeList={gradeList}
+            deleteGrade={props.deleteGrade}
           />
-        <p>Grade:</p>
+        <p>Grade: {grade}</p>
       </div>
     )
-  }
 }

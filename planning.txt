@@ -100,6 +100,10 @@ v1.0
 7.9.20
 - adding multiple class functionality
 
+7.13.20
+- added outer app function component
+- changed form, class, gradelist, and grade class components to function components
+
 [] planning subsection addition
 - displaySubclass
     - shows subclass buttons
