@@ -8,7 +8,8 @@ export default class Form extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      classList: []
+      classList: [],
+      currClass: 0
     }
     this.addClass = this.addClass.bind(this)
     this.deleteClass = this.deleteClass.bind(this)
@@ -66,6 +67,11 @@ export default class Form extends React.Component {
         })
     }))
   }
+  setActive(id) {
+      this.setState({
+          currClass: id
+      })
+  }
 
   logState(){
       console.log(this.state)
@@ -75,15 +81,19 @@ export default class Form extends React.Component {
       <div>
         <button onClick={this.addClass}>Add class</button>
         <button onClick={this.logState}>Log state</button>
-        {this.state.classList.map((cls, i) => {
-            return <Class
-                data={this.state.classList[i]}
-                addGrade={this.addGrade}
-                deleteGrade={this.deleteGrade}
-                handleChange={this.handleChange}
-                key={cls.id}
-            />
+        <br />
+        {this.state.classList.map(cls => {
+            return <button onClick={() => this.setActive(cls.id)}>{cls.name}</button>
         })}
+        {(this.state.classList.length !== 0) ? <Class
+            data={this.state.classList[this.state.currClass]}
+            addGrade={this.addGrade}
+            deleteGrade={this.deleteGrade}
+            handleChange={this.handleChange}
+        />
+        :
+        <h4>Add a class to get started!</h4>
+       }
       </div>
     )
   }

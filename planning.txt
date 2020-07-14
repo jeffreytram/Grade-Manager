@@ -105,6 +105,7 @@ v1.0
 - changed form, class, gradelist, and grade class components to function components
 - now handles form changes
 - added grade calculation
+- now renders only the current class
 
 
 
