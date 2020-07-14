@@ -2,7 +2,8 @@ import React from "react";
 import Class from "./Class"
 import "./Form.css"
 
-let id = 0;
+let classKey = 0
+let gradeKey = 0
 export default class Form extends React.Component {
   constructor(props) {
     super(props)
@@ -18,7 +19,7 @@ export default class Form extends React.Component {
   }
   addClass() {
     this.setState({
-        classList: [...this.state.classList, {id: id++, name: "Class " + id, grade: "", gradeList: []}]
+        classList: [...this.state.classList, {id: classKey++, name: "Class " + classKey, gradeList: []}]
     })
   }
   deleteClass() {
@@ -27,7 +28,7 @@ export default class Form extends React.Component {
   addGrade(classID) {
     this.setState(prevState => {
         const newList = [...prevState.classList]
-        newList[classID].gradeList.push({id: prevState.classList[classID].gradeList.length, name: "", weight: "", score: "" })
+        newList[classID].gradeList.push({id: gradeKey++, name: "", weight: "", score: "" })
         return {
             classList: newList
         }
@@ -37,7 +38,6 @@ export default class Form extends React.Component {
     this.setState(prevState => {
         const newList = [...prevState.classList]
         newList[classID].gradeList = newList[classID].gradeList.filter(grade => grade.id !== gradeID)
-        console.log(newList)
         return {
             classList: newList
         }
@@ -81,6 +81,7 @@ export default class Form extends React.Component {
                 addGrade={this.addGrade}
                 deleteGrade={this.deleteGrade}
                 handleChange={this.handleChange}
+                key={cls.id}
             />
         })}
       </div>

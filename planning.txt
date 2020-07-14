@@ -104,6 +104,14 @@ v1.0
 - added outer app function component
 - changed form, class, gradelist, and grade class components to function components
 - now handles form changes
+- added grade calculation
+
+
+
+
+
+
+
 
 [] planning subsection addition
 - displaySubclass
