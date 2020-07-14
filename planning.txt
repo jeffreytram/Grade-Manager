@@ -107,6 +107,16 @@ v1.0
 - added grade calculation
 - now renders only the current class
 
+7.14.20
+- added delete class
+- handles new current class after adding/deleting a class
+
+
+TODO:
+- fix bug with deleting class
+- issue probably with async of setstate updating class component
+    - https://reactjs.org/docs/react-component.html#componentdidupdate
+
 
 
 
