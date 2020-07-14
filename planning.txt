@@ -110,13 +110,10 @@ v1.0
 7.14.20
 - added delete class
 - handles new current class after adding/deleting a class
-- fixed bug with adding grade to wrong class
+- fixed bug with adding/deleting grade in wrong class
 
+- improved efficiency of handle change
 
-TODO:
-- fix bug with deleting class
-- issue probably with async of setstate updating class component
-    - https://reactjs.org/docs/react-component.html#componentdidupdate
 
 
 

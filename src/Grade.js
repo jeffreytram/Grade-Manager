@@ -10,23 +10,23 @@ export default function Grade(props) {
 				placeholder="Name"
 				type="text"
 				value={name}
-				onChange={(event) => props.handleChange(event, props.classID, id)}
+				onChange={(event) => props.handleChange(event, id)}
 			/>
 			<input
 				name="weight"
 				placeholder="Weight"
 				type="number"
 				value={weight}
-				onChange={(event) => props.handleChange(event, props.classID, id)}
+				onChange={(event) => props.handleChange(event, id)}
 			/>
 			<input
 				name="score"
 				placeholder="Score"
 				type="number"
 				value={score}
-				onChange={(event) => props.handleChange(event, props.classID, id)}
+				onChange={(event) => props.handleChange(event, id)}
 			/>
-			<button onClick={() => props.deleteGrade(props.classID, id)}>Delete</button>
+			<button onClick={() => props.deleteGrade(id)}>Delete</button>
 		</div>
 	)
 }

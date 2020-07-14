@@ -18,6 +18,7 @@ export default class Form extends React.Component {
     this.handleChange = this.handleChange.bind(this)
     this.logState = this.logState.bind(this)
   }
+
   addClass() {
     this.setState(prevState => {
       return {
@@ -26,6 +27,7 @@ export default class Form extends React.Component {
       }
     })
   }
+
   deleteClass() {
     const newList = [...this.state.classList]
     const currClass = this.state.currClass
@@ -37,6 +39,7 @@ export default class Form extends React.Component {
       }
     })
   }
+
   findNextClass(arr, currIndex) {
     if (currIndex < arr.length - 1) {
       return currIndex
@@ -46,6 +49,7 @@ export default class Form extends React.Component {
       return 0
     }
   }
+
   setActiveIndex(classID) {
     this.setState(prevState => {
       const classIDs = prevState.classList.map(cls => cls.id)
@@ -65,59 +69,53 @@ export default class Form extends React.Component {
     })
   }
 
-  deleteGrade(classID, gradeID) {
+  deleteGrade(gradeID) {
     this.setState(prevState => {
       const newList = [...prevState.classList]
-      newList[classID].gradeList = newList[classID].gradeList.filter(grade => grade.id !== gradeID)
+      newList[prevState.currClass].gradeList = newList[prevState.currClass].gradeList.filter(grade => grade.id !== gradeID)
       return {
         classList: newList
       }
     })
   }
 
-  handleChange(event, classID, gradeID) {
+  handleChange(event, gradeID) {
     const { name, value } = event.target
     if (name === "className") {
       //change name based on id
-      this.setState(prevState => ({
-        classList: prevState.classList.map(cls => {
-          if (cls.id !== classID) {
-            return cls
-          }
-          return {
-            ...cls,
-            name: value
-          }
-        })
-      }))
-
+      this.setState(prevState => {
+        const index = prevState.currClass
+        const updatedList = prevState.classList
+        updatedList[index].name = value
+        return {
+          classList: updatedList
+        }
+      })
     } else {
-      this.setState(prevState => ({
-        classList: prevState.classList.map(cls => {
-          if (cls.id !== classID) {
-            return cls
+      this.setState(prevState => {
+        const updatedClassList = prevState.classList
+        const index = prevState.currClass
+        updatedClassList[index].gradeList = updatedClassList[index].gradeList.map(grade => {
+          if (grade.id !== gradeID) {
+            return grade
           } else {
-            cls.gradeList = cls.gradeList.map(grade => {
-              if (grade.id !== gradeID) {
-                return grade
-              } else {
-                return {
-                  ...grade,
-                  [name]: value
-                }
-              }
-            })
-            return cls
+            return {
+              ...grade,
+              [name]: value
+            }
           }
         })
-      }))
+        return {
+          classList: updatedClassList
+        }
+      })
     }
-
   }
 
   logState() {
     console.log(this.state)
   }
+
   render() {
     return (
       <div>
