@@ -2,7 +2,7 @@ import React from "react";
 import "./Grade.css"
 
 export default function Grade(props) {
-	const { name, weight, score, id } = props.data
+  const { name, weight, score, id } = props.data
 	return (
 		<div>
 			<input
@@ -26,7 +26,7 @@ export default function Grade(props) {
 				value={score}
 				onChange={(event) => props.handleChange(event, id)}
 			/>
-			<button onClick={() => props.deleteGrade(id)}>Delete</button>
+			<button className="component-delete-btn" onClick={() => props.deleteGrade(id)}>Delete</button>
 		</div>
 	)
 }

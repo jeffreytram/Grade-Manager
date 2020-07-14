@@ -5,7 +5,6 @@ import "./GradeList.css"
 export default function GradeList(props) {
 	return (
 		<div>
-			<ul>
 				{props.gradeList.map(grade => {
 					return <Grade
 						data={grade}
@@ -14,7 +13,6 @@ export default function GradeList(props) {
 						key={grade.id}
 					/>
 				})}
-			</ul>
 		</div>
 	)
 }

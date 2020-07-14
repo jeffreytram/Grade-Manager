@@ -4,7 +4,7 @@ import "./App.css"
 
 export default function App(props) {
 	return (
-		<div>
+		<div className="app-container">
 			<h2>Grade Manager</h2>
 			<Form />
 		</div>

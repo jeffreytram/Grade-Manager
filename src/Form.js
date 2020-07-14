@@ -16,13 +16,12 @@ export default class Form extends React.Component {
     this.addGrade = this.addGrade.bind(this)
     this.deleteGrade = this.deleteGrade.bind(this)
     this.handleChange = this.handleChange.bind(this)
-    this.logState = this.logState.bind(this)
   }
 
   addClass() {
     this.setState(prevState => {
       return {
-        classList: [...prevState.classList, { id: classKey++, name: "Class " + classKey, gradeList: [] }],
+        classList: [...prevState.classList, { id: classKey++, name: "", gradeList: [] }],
         currClass: prevState.classList.length
       }
     })
@@ -112,21 +111,27 @@ export default class Form extends React.Component {
     }
   }
 
-  logState() {
-    console.log(this.state)
-  }
-
   render() {
     return (
       <div>
-        <button onClick={this.addClass}>Add class</button>
-        <button onClick={this.deleteClass}>Delete current class</button>
-        <br />
-        <button onClick={this.logState}>Log state</button>
-        <br />
-        {this.state.classList.map(cls => {
-          return <button onClick={() => this.setActiveIndex(cls.id)}>{cls.name}</button>
-        })}
+        <button className="component-btn add" onClick={this.addClass}>Add class</button>
+        <button className="component-btn delete" onClick={this.deleteClass}>Delete current class</button>
+        <br /> <br />
+        <div className="component-flex-container">
+          {this.state.classList.map(cls => {
+            let className = cls.name
+            if (className === "") {
+              className = "Class " + (cls.id + 1)
+            }
+            return (
+              <button
+                className={(this.state.classList[this.state.currClass].id === cls.id) ? "component-class-tab active" : "component-class-tab"}
+                onClick={() => this.setActiveIndex(cls.id)}>
+                {className}
+              </button>
+            )
+          })}
+        </div>
         <br /> <br />
         {(this.state.classList.length !== 0) ?
           <Class

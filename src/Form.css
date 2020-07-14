@@ -1,0 +1,25 @@
+.component-flex-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  gap: 5px 10px;
+}
+
+.component-class-tab {
+  border: 0;
+  border-bottom: 1px solid rgba(30, 30, 30, .5);
+  background-color: white;
+  padding: 5px 10px 0px 10px;
+}
+
+.active {
+  border-bottom: 2px solid rgba(30, 30, 30);
+  font-weight: bold;
+}
+
+.component-btn {
+  border: 2px solid rgba(30, 30, 30, .5);
+  border-radius: 5px;
+  background-color: white;
+  padding: 10px 20px;
+  font-weight: 600;
+}
