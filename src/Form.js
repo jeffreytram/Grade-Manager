@@ -14,6 +14,7 @@ export default class Form extends React.Component {
     this.addGrade = this.addGrade.bind(this)
     this.deleteGrade = this.deleteGrade.bind(this)
     this.logState = this.logState.bind(this)
+    this.handleChange = this.handleChange.bind(this)
   }
   addClass() {
     this.setState({
@@ -41,11 +42,31 @@ export default class Form extends React.Component {
             classList: newList
         }
     })
-    
-    // this.setState({
-    //   gradeList: this.state.gradeList.filter(grade => grade.id !== id)
-    // })
   }  
+
+  handleChange(event, classID, gradeID) {
+    const {name, value} = event.target
+    this.setState(prevState => ({
+        classList: prevState.classList.map(cls => {
+           if (cls.id !== classID) {
+               return cls
+           } else {
+               cls.gradeList = cls.gradeList.map(grade => {
+                   if (grade.id !== gradeID) {
+                     return grade
+                   } else {
+                       return {
+                           ...grade,
+                           [name]: value
+                       }
+                   }
+               })
+               return cls
+           }
+        })
+    }))
+  }
+
   logState(){
       console.log(this.state)
   }
@@ -59,6 +80,7 @@ export default class Form extends React.Component {
                 data={this.state.classList[i]}
                 addGrade={this.addGrade}
                 deleteGrade={this.deleteGrade}
+                handleChange={this.handleChange}
             />
         })}
       </div>

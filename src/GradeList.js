@@ -9,8 +9,9 @@ export default function GradeList(props) {
           {props.gradeList.map(grade => {
             return <Grade 
               classID={props.classID}
+              data={grade}
               deleteGrade={props.deleteGrade}
-              gradeID={grade.id}
+              handleChange={props.handleChange}
             />
           })}
         </ul>

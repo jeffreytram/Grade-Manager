@@ -12,6 +12,7 @@ export default function Class(props) {
             classID={id} 
             gradeList={gradeList}
             deleteGrade={props.deleteGrade}
+            handleChange={props.handleChange}
           />
         <p>Grade: {grade}</p>
       </div>
