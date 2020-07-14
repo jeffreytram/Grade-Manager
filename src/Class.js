@@ -18,7 +18,7 @@ export default function Class(props) {
 				onChange={(event) => props.handleChange(event, id)}
 			/>
 			<br /> <br />
-			<button onClick={() => props.addGrade(id)}>Add Grade</button>
+			<button onClick={props.addGrade}>Add Grade</button>
 			<GradeList
 				classID={id}
 				gradeList={gradeList}

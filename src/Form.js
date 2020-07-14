@@ -39,13 +39,10 @@ export default class Form extends React.Component {
   }
   findNextClass(arr, currIndex) {
     if (currIndex < arr.length - 1) {
-      console.log("next one to right")
       return currIndex
     } else if (currIndex > 0) {
-      console.log("next one before")
       return currIndex - 1
     } else {
-      console.log("aint found shit")
       return 0
     }
   }
@@ -58,10 +55,10 @@ export default class Form extends React.Component {
     })
   }
 
-  addGrade(classID) {
+  addGrade() {
     this.setState(prevState => {
       const newList = [...prevState.classList]
-      newList[classID].gradeList.push({ id: gradeKey++, name: "", weight: "", score: "" })
+      newList[prevState.currClass].gradeList.push({ id: gradeKey++, name: "", weight: "", score: "" })
       return {
         classList: newList
       }

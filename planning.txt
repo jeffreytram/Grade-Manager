@@ -110,6 +110,7 @@ v1.0
 7.14.20
 - added delete class
 - handles new current class after adding/deleting a class
+- fixed bug with adding grade to wrong class
 
 
 TODO:
