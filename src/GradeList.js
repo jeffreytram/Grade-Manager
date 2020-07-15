@@ -10,7 +10,7 @@ export default function GradeList(props) {
 						data={grade}
 						deleteGrade={props.deleteGrade}
 						handleChange={props.handleChange}
-						key={grade.id}
+            key={grade.id}
 					/>
 				})}
 		</div>

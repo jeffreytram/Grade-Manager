@@ -115,6 +115,17 @@ v1.0
 - improved efficiency of handle change
 - added css
 
+7.15.20
+- now deployed on github pages
+  - deploy with "npm run deploy"
+
+TODO:
+- local storage of react state
+- actively selected grade
+- data viz of grade over time?
+  - line graph with class grade over time
+  - line for each class
+
 
 
 
@@ -156,13 +167,9 @@ v1.0
 [] displaying average grade required in remaining grade to get to next milestone/grade letter
     - chart 
 
-[] limit number input to 3 numbers
-- Issues: problem with not being able to limit inputs to 3 digits
 
 
 
 Resources:
-Deplyoing React App: https://create-react-app.dev/docs/deployment/#github-pages-https-pagesgithubcom
-
-child state and parent state: https://stackoverflow.com/questions/52629386/react-passing-child-state-to-parent-state
-https://stackoverflow.com/questions/54445040/whats-the-best-alternative-to-update-nested-react-state-property-with-setstate
+Deploying React App: https://create-react-app.dev/docs/deployment/#github-pages-https-pagesgithubcom
+Deploying React app in github pages: https://dev.to/yuribenjamin/how-to-deploy-react-app-in-github-pages-2a1f

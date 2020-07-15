@@ -9,7 +9,7 @@ export default function Class(props) {
 	gradeList.forEach(grade => classGrade += grade.weight * grade.score)
 
 	return (
-		<div>
+		<div className="component-class-container">
 			<input
         className="component-class-name"
 				name="className"
