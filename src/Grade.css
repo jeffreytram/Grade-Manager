@@ -4,11 +4,11 @@ input {
   margin: 0px 5px;
 }
 
-input[type="text"] {
+.component-input-text {
   width: 30vw;
 }
-input[type="number"] {
-  width: 8vw;
+.component-input-num {
+  width: 60px;
 }
 
 .component-delete-btn {

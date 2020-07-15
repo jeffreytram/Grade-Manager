@@ -18,6 +18,22 @@ export default class Form extends React.Component {
     this.handleChange = this.handleChange.bind(this)
   }
 
+  componentDidMount() {
+    //retrieve local storage if found
+    const classList = JSON.parse(localStorage.getItem('classList'))
+    const currClass = localStorage.getItem('currClass')
+    if (classList !== null) {
+      this.setState({classList, currClass})
+    }
+  }
+
+  componentDidUpdate() {
+    //save to local storage
+    const {classList, currClass} = this.state
+    localStorage.setItem('classList', JSON.stringify(classList))
+    localStorage.setItem('currClass', currClass)
+  }
+
   addClass() {
     this.setState(prevState => {
       return {
@@ -147,3 +163,6 @@ export default class Form extends React.Component {
     )
   }
 }
+
+const test = localStorage.getItem("hello")
+console.log(test)

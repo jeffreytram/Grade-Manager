@@ -118,9 +118,9 @@ v1.0
 7.15.20
 - now deployed on github pages
   - deploy with "npm run deploy"
+- now stores state in local storage
 
 TODO:
-- local storage of react state
 - actively selected grade
 - data viz of grade over time?
   - line graph with class grade over time
