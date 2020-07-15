@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/Grade-Manager/static/css/main.7be21890.chunk.css",
+    "main.js": "/Grade-Manager/static/js/main.9a131568.chunk.js",
+    "main.js.map": "/Grade-Manager/static/js/main.9a131568.chunk.js.map",
+    "runtime-main.js": "/Grade-Manager/static/js/runtime-main.f0911a4f.js",
+    "runtime-main.js.map": "/Grade-Manager/static/js/runtime-main.f0911a4f.js.map",
+    "static/js/2.17b4d53b.chunk.js": "/Grade-Manager/static/js/2.17b4d53b.chunk.js",
+    "static/js/2.17b4d53b.chunk.js.map": "/Grade-Manager/static/js/2.17b4d53b.chunk.js.map",
+    "index.html": "/Grade-Manager/index.html",
+    "precache-manifest.5768e3aef31acebedc55d3af0edf2061.js": "/Grade-Manager/precache-manifest.5768e3aef31acebedc55d3af0edf2061.js",
+    "service-worker.js": "/Grade-Manager/service-worker.js",
+    "static/css/main.7be21890.chunk.css.map": "/Grade-Manager/static/css/main.7be21890.chunk.css.map",
+    "static/js/2.17b4d53b.chunk.js.LICENSE.txt": "/Grade-Manager/static/js/2.17b4d53b.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.f0911a4f.js",
+    "static/js/2.17b4d53b.chunk.js",
+    "static/css/main.7be21890.chunk.css",
+    "static/js/main.9a131568.chunk.js"
+  ]
+}
