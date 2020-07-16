@@ -1,7 +1,6 @@
 import React from "react";
 import Class from "./Class"
 import "./Form.css"
-
 let classKey = 0
 let gradeKey = 0
 export default class Form extends React.Component {
@@ -9,10 +8,12 @@ export default class Form extends React.Component {
     super(props)
     this.state = {
       classList: [],
-      currClass: 0
+      currClass: 0,
     }
     this.addClass = this.addClass.bind(this)
     this.deleteClass = this.deleteClass.bind(this)
+    this.addSection = this.addSection.bind(this)
+    this.deleteSection = this.deleteSection.bind(this)
     this.addGrade = this.addGrade.bind(this)
     this.deleteGrade = this.deleteGrade.bind(this)
     this.handleChange = this.handleChange.bind(this)
@@ -37,7 +38,7 @@ export default class Form extends React.Component {
   addClass() {
     this.setState(prevState => {
       return {
-        classList: [...prevState.classList, { id: classKey++, name: "", gradeList: [] }],
+        classList: [...prevState.classList, { id: classKey++, name: "", sectionList: [], sectionKey: 0}],
         currClass: prevState.classList.length
       }
     })
@@ -51,6 +52,27 @@ export default class Form extends React.Component {
       return {
         classList: newList.filter((cls, i) => i !== currClass),
         currClass: nextClassIndex
+      }
+    })
+  }
+
+  addSection() {
+    this.setState(prevState => {
+      const newList = [...prevState.classList]
+      let sectionKey = newList[prevState.currClass].sectionKey++
+      newList[prevState.currClass].sectionList.push({ id: sectionKey, name: "", weight: "", gradeList: [] })
+      return {
+        classList: newList
+      }
+    })
+  }
+
+  deleteSection(sectionID) {
+    this.setState(prevState => {
+      const newList = [...prevState.classList]
+      newList[prevState.currClass].sectionList = newList[prevState.currClass].sectionList.filter(section => section.id !== sectionID)
+      return {
+        classList: newList
       }
     })
   }
@@ -74,27 +96,34 @@ export default class Form extends React.Component {
     })
   }
 
-  addGrade() {
+  addGrade(sectionID) {
     this.setState(prevState => {
       const newList = [...prevState.classList]
-      newList[prevState.currClass].gradeList.push({ id: gradeKey++, name: "", weight: "", score: "" })
+      newList[prevState.currClass].sectionList.map(section => {
+        if (section.id !== sectionID) {
+          return section
+        } else {
+          section.gradeList.push({ id: gradeKey++, name: "", weight: "", score: "" })
+          return section
+        }
+      })
       return {
         classList: newList
       }
     })
   }
 
-  deleteGrade(gradeID) {
+  deleteGrade(sectionID, gradeID) {
     this.setState(prevState => {
       const newList = [...prevState.classList]
-      newList[prevState.currClass].gradeList = newList[prevState.currClass].gradeList.filter(grade => grade.id !== gradeID)
+      newList[prevState.currClass].sectionList[sectionID].gradeList = newList[prevState.currClass].sectionList[sectionID].gradeList.filter(grade => grade.id !== gradeID)
       return {
         classList: newList
       }
     })
   }
 
-  handleChange(event, gradeID) {
+  handleChange(event, sectionID, gradeID) {
     const { name, value } = event.target
     if (name === "className") {
       //change name based on id
@@ -110,7 +139,7 @@ export default class Form extends React.Component {
       this.setState(prevState => {
         const updatedClassList = prevState.classList
         const index = prevState.currClass
-        updatedClassList[index].gradeList = updatedClassList[index].gradeList.map(grade => {
+        updatedClassList[index].sectionList[sectionID].gradeList = updatedClassList[index].sectionList[sectionID].gradeList.map(grade => {
           if (grade.id !== gradeID) {
             return grade
           } else {
@@ -152,6 +181,8 @@ export default class Form extends React.Component {
         {(this.state.classList.length !== 0) ?
           <Class
             data={this.state.classList[this.state.currClass]}
+            addSection={this.addSection}
+            deleteSection={this.deleteSection}
             addGrade={this.addGrade}
             deleteGrade={this.deleteGrade}
             handleChange={this.handleChange}
@@ -163,6 +194,3 @@ export default class Form extends React.Component {
     )
   }
 }
-
-const test = localStorage.getItem("hello")
-console.log(test)

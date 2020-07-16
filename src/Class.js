@@ -1,13 +1,10 @@
 import React from "react";
-import GradeList from "./GradeList"
+import Section from "./Section"
 import "./Class.css"
 
 export default function Class(props) {
-	const { id, name, gradeList } = props.data
-
-	let classGrade = 0
-	gradeList.forEach(grade => classGrade += grade.weight * grade.score)
-
+  const { id, name, sectionList, sectionKey } = props.data
+  console.log(sectionList)
 	return (
 		<div className="component-class-container">
 			<input
@@ -19,14 +16,17 @@ export default function Class(props) {
 				onChange={(event) => props.handleChange(event, id)}
 			/>
       <br /> <br />
-      <button className="component-add-grade-btn" onClick={props.addGrade}>Add Grade</button>
-      <p>Grade: {classGrade}</p>
-			<GradeList
-				classID={id}
-				gradeList={gradeList}
-				deleteGrade={props.deleteGrade}
-				handleChange={props.handleChange}
-			/>
+      <button className="component-add-grade-btn" onClick={props.addSection}>Add Section</button>
+      <p>Grade: TBD</p>
+      {sectionList.map(section => {
+        return <Section
+          data={section}
+          deleteSection={props.deleteSection}
+          addGrade={props.addGrade}
+          deleteGrade={props.deleteGrade}
+          handleChange={props.handleChange}
+        />
+      })}
 		</div>
 	)
 }

@@ -3,11 +3,13 @@ import Grade from "./Grade"
 import "./GradeList.css"
 
 export default function GradeList(props) {
+  const {id, gradeList} = props.data
 	return (
 		<div>
-				{props.gradeList.map(grade => {
+				{gradeList.map(grade => {
 					return <Grade
-						data={grade}
+            data={grade}
+            sectionID={id}
 						deleteGrade={props.deleteGrade}
 						handleChange={props.handleChange}
             key={grade.id}

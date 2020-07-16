@@ -11,7 +11,7 @@ export default function Grade(props) {
         placeholder="Name"
         type="text"
         value={name}
-        onChange={(event) => props.handleChange(event, id)}
+        onChange={(event) => props.handleChange(event, props.sectionID, id)}
       />
       <input
         className="component-input-num"
@@ -19,7 +19,7 @@ export default function Grade(props) {
         placeholder="Weight"
         type="number"
         value={weight}
-        onChange={(event) => props.handleChange(event, id)}
+        onChange={(event) => props.handleChange(event, props.sectionID, id)}
       />
       <input
         className="component-input-num"
@@ -27,9 +27,9 @@ export default function Grade(props) {
         placeholder="Score"
         type="number"
         value={score}
-        onChange={(event) => props.handleChange(event, id)}
+        onChange={(event) => props.handleChange(event, props.sectionID, id)}
       />
-      <button className="component-delete-btn" onClick={() => props.deleteGrade(id)}>Delete</button>
+      <button className="component-delete-btn" onClick={() => props.deleteGrade(props.sectionID, id)}>Delete</button>
     </div>
   )
 }

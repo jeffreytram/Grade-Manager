@@ -120,6 +120,16 @@ v1.0
   - deploy with "npm run deploy"
 - now stores state in local storage
 
+7.16.20
+- added grade sections
+
+bug: need to store class, section, grade ids in state
+ - [] class
+ - [] section
+ - [] grade id
+
+
+
 TODO:
 - actively selected grade
 - data viz of grade over time?
