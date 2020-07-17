@@ -1,11 +1,11 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "4b934b3d605735bde319b9e4a8403276",
+    "revision": "3de0c104ed68e071f62047fd4434baf4",
     "url": "/Grade-Manager/index.html"
   },
   {
-    "revision": "a9ecde64081fb4acd48e",
-    "url": "/Grade-Manager/static/css/main.4353608d.chunk.css"
+    "revision": "21901e2e494b621fe04d",
+    "url": "/Grade-Manager/static/css/main.b9963eb7.chunk.css"
   },
   {
     "revision": "b01316e7d2253877ff85",
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/Grade-Manager/static/js/2.17b4d53b.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "a9ecde64081fb4acd48e",
-    "url": "/Grade-Manager/static/js/main.b4857ac8.chunk.js"
+    "revision": "21901e2e494b621fe04d",
+    "url": "/Grade-Manager/static/js/main.67f81223.chunk.js"
   },
   {
     "revision": "b1bb2c51945807f17184",
