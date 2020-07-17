@@ -1,14 +1,14 @@
 import React from "react";
 import Class from "./Class"
 import "./Form.css"
-let classKey = 0
-let gradeKey = 0
+
 export default class Form extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
       classList: [],
       currClass: 0,
+      classKey: 0
     }
     this.addClass = this.addClass.bind(this)
     this.deleteClass = this.deleteClass.bind(this)
@@ -23,23 +23,26 @@ export default class Form extends React.Component {
     //retrieve local storage if found
     const classList = JSON.parse(localStorage.getItem('classList'))
     const currClass = localStorage.getItem('currClass')
+    const classKey = parseInt(localStorage.getItem('classKey'))
     if (classList !== null) {
-      this.setState({classList, currClass})
+      this.setState({ classList, currClass, classKey })
     }
   }
 
   componentDidUpdate() {
     //save to local storage
-    const {classList, currClass} = this.state
+    const { classList, currClass, classKey } = this.state
     localStorage.setItem('classList', JSON.stringify(classList))
     localStorage.setItem('currClass', currClass)
+    localStorage.setItem('classKey', classKey)
   }
 
   addClass() {
     this.setState(prevState => {
       return {
-        classList: [...prevState.classList, { id: classKey++, name: "", sectionList: [], sectionKey: 0}],
-        currClass: prevState.classList.length
+        classList: [...prevState.classList, { id: prevState.classKey, name: "", sectionList: [], sectionKey: 0 }],
+        currClass: prevState.classList.length,
+        classKey: prevState.classKey + 1
       }
     })
   }
@@ -60,7 +63,7 @@ export default class Form extends React.Component {
     this.setState(prevState => {
       const newList = [...prevState.classList]
       let sectionKey = newList[prevState.currClass].sectionKey++
-      newList[prevState.currClass].sectionList.push({ id: sectionKey, name: "", weight: "", gradeList: [] })
+      newList[prevState.currClass].sectionList.push({ id: sectionKey, sectionName: "", sectionWeight: "", sectionGrade: "", gradeList: [], gradeKey: 0 })
       return {
         classList: newList
       }
@@ -103,7 +106,9 @@ export default class Form extends React.Component {
         if (section.id !== sectionID) {
           return section
         } else {
-          section.gradeList.push({ id: gradeKey++, name: "", weight: "", score: "" })
+          const gradeKey = section.gradeKey
+          section.gradeList.push({ id: gradeKey, name: "", weight: "", score: "" })
+          section.gradeKey++
           return section
         }
       })
@@ -116,7 +121,14 @@ export default class Form extends React.Component {
   deleteGrade(sectionID, gradeID) {
     this.setState(prevState => {
       const newList = [...prevState.classList]
-      newList[prevState.currClass].sectionList[sectionID].gradeList = newList[prevState.currClass].sectionList[sectionID].gradeList.filter(grade => grade.id !== gradeID)
+      newList[prevState.currClass].sectionList.map(section => {
+        if (section.id !== sectionID) {
+          return section
+        } else {
+          section.gradeList = section.gradeList.filter(grade => grade.id !== gradeID)
+          return section
+        }
+      })
       return {
         classList: newList
       }
@@ -135,18 +147,41 @@ export default class Form extends React.Component {
           classList: updatedList
         }
       })
+    } else if (name === "sectionName" || name === "sectionWeight") {
+      this.setState(prevState => {
+        const index = prevState.currClass
+        const updatedList = prevState.classList
+        updatedList[index].sectionList.map(section => {
+          if (section.id !== sectionID) {
+            return section
+          } else {
+            section[name] = value
+            return section
+          }
+        })
+        return {
+          classList: updatedList
+        }
+      })
     } else {
       this.setState(prevState => {
         const updatedClassList = prevState.classList
         const index = prevState.currClass
-        updatedClassList[index].sectionList[sectionID].gradeList = updatedClassList[index].sectionList[sectionID].gradeList.map(grade => {
-          if (grade.id !== gradeID) {
-            return grade
+        updatedClassList[index].sectionList = updatedClassList[index].sectionList.map(section => {
+          if (section.id !== sectionID) {
+            return section
           } else {
-            return {
-              ...grade,
-              [name]: value
-            }
+            section.gradeList = section.gradeList.map(grade => {
+              if (grade.id !== gradeID) {
+                return grade
+              } else {
+                return {
+                  ...grade,
+                  [name]: value
+                }
+              }
+            })
+            return section
           }
         })
         return {

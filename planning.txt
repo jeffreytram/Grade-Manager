@@ -122,11 +122,10 @@ v1.0
 
 7.16.20
 - added grade sections
-
-bug: need to store class, section, grade ids in state
- - [] class
- - [] section
- - [] grade id
+- now storing key counter in state for each class, section, and grade
+  - fixed bug where the key counter resets on reload
+- added section details
+  - name, weight
 
 
 
