@@ -16,10 +16,18 @@
   font-weight: bold;
 }
 
-.component-btn {
-  border: 2px solid rgba(30, 30, 30, .5);
-  border-radius: 5px;
+.component-add-class-btn {
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  border: 2px solid lightgray;
   background-color: white;
-  padding: 5px 15px;
-  font-weight: 600;
+  padding: 6px 15px;
+}
+
+.component-delete-class-btn {
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  border: 2px solid lightgray;
+  background-color: white;
+  padding: 6px 15px;
 }

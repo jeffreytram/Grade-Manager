@@ -6,7 +6,7 @@ export default function Grade(props) {
   return (
     <div>
       <input
-        className="component-input-text"
+        className="component-grade-input text"
         name="name"
         placeholder="Name"
         type="text"
@@ -14,7 +14,7 @@ export default function Grade(props) {
         onChange={(event) => props.handleChange(event, props.sectionID, id)}
       />
       <input
-        className="component-input-num"
+        className="component-grade-input num"
         name="weight"
         placeholder="Weight"
         type="number"
@@ -22,14 +22,14 @@ export default function Grade(props) {
         onChange={(event) => props.handleChange(event, props.sectionID, id)}
       />
       <input
-        className="component-input-num"
+        className="component-grade-input num"
         name="score"
         placeholder="Score"
         type="number"
         value={score}
         onChange={(event) => props.handleChange(event, props.sectionID, id)}
       />
-      <button className="component-delete-btn" onClick={() => props.deleteGrade(props.sectionID, id)}>Delete</button>
+      <button className="component-delete-grade-btn" onClick={() => props.deleteGrade(props.sectionID, id)}>Delete</button>
     </div>
   )
 }

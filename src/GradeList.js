@@ -6,6 +6,7 @@ export default function GradeList(props) {
   const {id, gradeList} = props.data
 	return (
 		<div>
+      <ul>
 				{gradeList.map(grade => {
 					return <Grade
             data={grade}
@@ -15,6 +16,7 @@ export default function GradeList(props) {
             key={grade.id}
 					/>
 				})}
+        </ul>
 		</div>
 	)
 }

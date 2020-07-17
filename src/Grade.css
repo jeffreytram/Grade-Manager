@@ -1,19 +1,20 @@
-input {
+.component-grade-input {
   border: 0;
-  border-bottom: 1px solid rgba(30, 30, 30);
+  border-bottom: 1px solid rgba(30, 30, 30, .15);
   margin: 0px 5px;
 }
 
-.component-input-text {
+.text {
   width: 30vw;
 }
-.component-input-num {
+.num {
   width: 60px;
 }
 
-.component-delete-btn {
-  border: 2px solid #303030;
-  padding: 2px 15px;
-  background-color: lightpink;
-  font-weight: bold;
+.component-delete-grade-btn {
+  border: none;
+  border-radius: 5px;
+  background-color: white;
+  color: rgba(255, 0 , 0, .7);
+  padding: 0px 15px;
 }

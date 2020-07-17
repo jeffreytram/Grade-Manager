@@ -1,0 +1,28 @@
+.component-section-container {
+  border: 2px solid lightgray;
+  border-radius: 5px;
+  margin: 15px 0px;
+  padding: 10px;
+}
+
+.component-section-input {
+  border: 0;
+  border-bottom: 1px solid rgb(30, 30, 30);
+  margin: 0px 5px;
+}
+
+.component-add-grade-btn {
+  border: 2px solid lightgray;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  background-color: white;
+  padding: 2px 15px;
+}
+
+.component-delete-section-btn {
+  border: 2px solid lightgray;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  background-color: white;
+  padding: 2px 15px;
+}

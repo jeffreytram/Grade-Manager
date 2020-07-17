@@ -208,8 +208,8 @@ export default class Form extends React.Component {
   render() {
     return (
       <div>
-        <button className="component-btn add" onClick={this.addClass}>Add class</button>
-        <button className="component-btn delete" onClick={this.deleteClass}>Delete current class</button>
+        <button className="component-add-class-btn" onClick={this.addClass}>Add class</button>
+        <button className="component-delete-class-btn" onClick={this.deleteClass}>Delete current class</button>
         <br /> <br />
         <div className="component-flex-container">
           {this.state.classList.map(cls => {

@@ -1,13 +1,13 @@
 import React from "react";
 import GradeList from "./GradeList"
-import "./Class.css"
+import "./Section.css"
 
 export default function Section(props) {
   const { id, sectionName, sectionWeight, sectionGrade } = props.data
   return (
-    <div className="">
+    <div className="component-section-container">
       <input
-        className=""
+        className="component-section-input"
 				name="sectionName"
 				placeholder="Section Name"
 				type="text"
@@ -15,16 +15,16 @@ export default function Section(props) {
 				onChange={(event) => props.handleChange(event, id)}
 			/>
       <input
-        className=""
+        className="component-section-input num"
         name="sectionWeight"
-        placeholder="Section Weight"
+        placeholder="Weight"
         type="number"
         value={sectionWeight}
         onChange={(event) => props.handleChange(event, id)}
       />
       <button className="component-add-grade-btn" onClick={() => props.addGrade(id)}>Add Grade</button>
-      <button onClick={() => props.deleteSection(id)}>Delete section</button>
-      <p>Section grade: {sectionGrade}</p>
+      <button className="component-delete-section-btn" onClick={() => props.deleteSection(id)}>Delete section</button>
+      <span>Grade: {sectionGrade}</span>
       <GradeList
         data={props.data}
         deleteGrade={props.deleteGrade}
