@@ -1,9 +1,13 @@
 .app-container {
-  margin: 5px 10px;
+  margin: 0px 5px;
   padding: 10px;
 }
 
-button:hover {
+button:hover, .component-class-tab:hover {
   cursor: pointer;
   font-weight: bold;
+}
+
+input {
+  background-color: rgba(0, 0, 0 , 0);
 }

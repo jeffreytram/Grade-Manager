@@ -1,7 +1,6 @@
 .component-section-container {
-  border: 2px solid lightgray;
-  border-radius: 5px;
-  margin: 15px 0px;
+  border-radius: 10px;
+  margin: 10px 0px;
   padding: 10px;
 }
 
@@ -25,4 +24,24 @@
   border-bottom-right-radius: 5px;
   background-color: white;
   padding: 2px 15px;
+}
+
+.red {
+  background-color: rgba(207, 18, 89, .08);
+}
+
+.yellow {
+  background-color: rgba(255, 240, 124, .08);
+}
+
+.green {
+  background-color: rgba(92, 148, 110, .08);
+}
+
+.blue {
+  background-color: rgba(39, 154, 241, .08);
+}
+
+.purple {
+  background-color: rgba(135, 89, 155, .08);
 }

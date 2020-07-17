@@ -130,12 +130,17 @@ v1.0
   7.17.20
   - added section and class grade calculation
   - css changes
+  - additional css changes
 
 
 
 
 
 TODO:
+- button changes
+  - delete button at top right of corner
+  - appears on hover
+  
 - data viz of grade over time?
   - line graph with class grade over time
   - line for each class
