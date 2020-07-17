@@ -40,7 +40,7 @@ export default class Form extends React.Component {
   addClass() {
     this.setState(prevState => {
       return {
-        classList: [...prevState.classList, { id: prevState.classKey, name: "", sectionList: [], sectionKey: 0 }],
+        classList: [...prevState.classList, { id: prevState.classKey, name: "", sectionList: [], sectionKey: 0, classGrade: "" }],
         currClass: prevState.classList.length,
         classKey: prevState.classKey + 1
       }
@@ -151,14 +151,20 @@ export default class Form extends React.Component {
       this.setState(prevState => {
         const index = prevState.currClass
         const updatedList = prevState.classList
+
+        let classGrade = 0
+
         updatedList[index].sectionList.map(section => {
           if (section.id !== sectionID) {
+            classGrade += section.sectionWeight * section.sectionGrade
             return section
           } else {
             section[name] = value
+            classGrade += section.sectionWeight * section.sectionGrade
             return section
           }
         })
+        updatedList[index].classGrade = classGrade
         return {
           classList: updatedList
         }
@@ -167,8 +173,12 @@ export default class Form extends React.Component {
       this.setState(prevState => {
         const updatedClassList = prevState.classList
         const index = prevState.currClass
+
+        let classGrade = 0
         updatedClassList[index].sectionList = updatedClassList[index].sectionList.map(section => {
+          let sectionGrade = 0
           if (section.id !== sectionID) {
+            classGrade += section.sectionWeight * section.sectionGrade
             return section
           } else {
             section.gradeList = section.gradeList.map(grade => {
@@ -181,9 +191,13 @@ export default class Form extends React.Component {
                 }
               }
             })
+            section.gradeList.forEach(grade => sectionGrade += grade.weight * grade.score)
+            section.sectionGrade = sectionGrade
+            classGrade += section.sectionWeight * section.sectionGrade
             return section
           }
         })
+        updatedClassList[index].classGrade = classGrade
         return {
           classList: updatedClassList
         }

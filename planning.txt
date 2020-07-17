@@ -127,10 +127,14 @@ v1.0
 - added section details
   - name, weight
 
+  7.17.20
+  - added section and class grade calculation
+
+
+
 
 
 TODO:
-- actively selected grade
 - data viz of grade over time?
   - line graph with class grade over time
   - line for each class
