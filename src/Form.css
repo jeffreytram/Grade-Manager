@@ -5,6 +5,7 @@
 }
 
 .component-class-tab {
+  position: relative;
   border: 0;
   border-bottom: 1px solid rgba(30, 30, 30, .5);
   background-color: white;
@@ -25,9 +26,9 @@
 }
 
 .component-delete-class-btn {
-  border-top-right-radius: 5px;
-  border-bottom-right-radius: 5px;
-  border: 2px solid lightgray;
-  background-color: white;
-  padding: 6px 15px;
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  border: none;
+  background-color: rgba(0, 0, 0, 0);
 }

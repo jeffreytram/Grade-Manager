@@ -47,13 +47,18 @@ export default class Form extends React.Component {
     })
   }
 
-  deleteClass() {
-    const newList = [...this.state.classList]
-    const currClass = this.state.currClass
+  deleteClass(classID) {
     this.setState(prevState => {
-      const nextClassIndex = this.findNextClass(prevState.classList, currClass)
+      let newList = prevState.classList
+      let nextClassIndex = prevState.currClass
+      const currentID = prevState.classList[prevState.currClass].id
+      if (currentID === classID) {
+        nextClassIndex = this.findNextClass(prevState.classList, prevState.currClass)
+      } else if (currentID > classID) {
+        nextClassIndex--
+      }
       return {
-        classList: newList.filter((cls, i) => i !== currClass),
+        classList: newList.filter(cls => cls.id !== classID),
         currClass: nextClassIndex
       }
     })
@@ -90,13 +95,17 @@ export default class Form extends React.Component {
     }
   }
 
-  setActiveIndex(classID) {
-    this.setState(prevState => {
-      const classIDs = prevState.classList.map(cls => cls.id)
-      return {
-        currClass: classIDs.indexOf(classID)
-      }
-    })
+  setActiveIndex(event, classID) {
+    console.log(event.target)
+    console.log(event.target.className)
+    if (event.target.className === "component-class-tab") {
+      this.setState(prevState => {
+        const classIDs = prevState.classList.map(cls => cls.id)
+        return {
+          currClass: classIDs.indexOf(classID)
+        }
+      })
+    }
   }
 
   addGrade(sectionID) {
@@ -208,9 +217,7 @@ export default class Form extends React.Component {
   render() {
     return (
       <div>
-        <button className="component-add-class-btn" onClick={this.addClass}>Add class</button>
-        <button className="component-delete-class-btn" onClick={this.deleteClass}>Delete current class</button>
-        <br /> <br />
+        <button className="component-add-class-btn" onClick={this.addClass}>Add class</button>        <br /> <br />
         <div className="component-flex-container">
           {this.state.classList.map(cls => {
             let className = cls.name
@@ -218,11 +225,18 @@ export default class Form extends React.Component {
               className = "Class " + (cls.id + 1)
             }
             return (
-              <span
+              <div
                 className={(this.state.classList[this.state.currClass].id === cls.id) ? "component-class-tab active" : "component-class-tab"}
-                onClick={() => this.setActiveIndex(cls.id)}>
+                onClick={(event) => this.setActiveIndex(event, cls.id)}
+              >
                 {className}
-              </span>
+                <button
+                  className="component-delete-class-btn"
+                  onClick={() => this.deleteClass(cls.id)}
+                >
+                  X
+                </button>
+              </div>
             )
           })}
         </div>

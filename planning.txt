@@ -135,10 +135,7 @@ v1.0
 7.18.20
 - changed placement and style of add grade and delete section buttons
 - fixed bug with rounding grades
-
-delete class change
-
-
+- added class deletion button to top right of each tab
 
 
 TODO:
