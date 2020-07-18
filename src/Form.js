@@ -40,7 +40,7 @@ export default class Form extends React.Component {
   addClass() {
     this.setState(prevState => {
       return {
-        classList: [...prevState.classList, { id: prevState.classKey, name: "", sectionList: [], sectionKey: 0, classGrade: "" }],
+        classList: [...prevState.classList, { id: prevState.classKey, name: "", sectionList: [], sectionKey: 0, classGrade: 0 }],
         currClass: prevState.classList.length,
         classKey: prevState.classKey + 1
       }
@@ -63,7 +63,7 @@ export default class Form extends React.Component {
     this.setState(prevState => {
       const newList = [...prevState.classList]
       let sectionKey = newList[prevState.currClass].sectionKey++
-      newList[prevState.currClass].sectionList.push({ id: sectionKey, sectionName: "", sectionWeight: "", sectionGrade: "", gradeList: [], gradeKey: 0 })
+      newList[prevState.currClass].sectionList.push({ id: sectionKey, sectionName: "", sectionWeight: "", sectionGrade: 0, gradeList: [], gradeKey: 0 })
       return {
         classList: newList
       }

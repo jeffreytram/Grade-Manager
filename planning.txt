@@ -127,14 +127,16 @@ v1.0
 - added section details
   - name, weight
 
-  7.17.20
-  - added section and class grade calculation
-  - css changes
-  - additional css changes
+7.17.20
+- added section and class grade calculation
+- css changes
+- additional css changes
 
-  7.18.20
-  - changed placement and style of add grade and delete section buttons
+7.18.20
+- changed placement and style of add grade and delete section buttons
+- fixed bug with rounding grades
 
+delete class change
 
 
 
