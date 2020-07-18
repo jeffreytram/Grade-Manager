@@ -15,8 +15,9 @@ export default function Class(props) {
         value={name}
         onChange={(event) => props.handleChange(event, id)}
       />
+      <span className="component-class-grade">Class grade: {classGrade.toFixed(2)}</span>
+      <br /> <br />
       <button className="component-add-section-btn" onClick={props.addSection}>Add Section</button>
-      <span>Class grade: {classGrade}</span>
       {sectionList.map(section => {
         return <Section
           data={section}

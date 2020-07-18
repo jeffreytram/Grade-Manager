@@ -6,6 +6,7 @@
 
 .text {
   width: 30vw;
+  max-width: 300px;
 }
 .num {
   width: 60px;
@@ -14,7 +15,7 @@
 .component-delete-grade-btn {
   border: none;
   border-radius: 5px;
-  background-color: white;
-  color: rgba(255, 0 , 0, .7);
+  background-color: rgba(0, 0, 0 , 0);
+  color: rgba(255, 0 , 0, 1);
   padding: 0px 15px;
 }

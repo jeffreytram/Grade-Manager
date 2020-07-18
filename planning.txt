@@ -132,6 +132,9 @@ v1.0
   - css changes
   - additional css changes
 
+  7.18.20
+  - changed placement and style of add grade and delete section buttons
+
 
 
 

@@ -1,7 +1,17 @@
+.component-class-container {
+  position: relative;
+  max-width: 800px;
+}
 .component-class-name {
   border: 0;
   border-bottom: 2px solid #303030;
   font-size: large;
+  font-weight: bold;
+}
+
+.component-class-grade {
+  position: absolute;
+  right: 3px;
   font-weight: bold;
 }
 
