@@ -2,7 +2,7 @@ import React from "react";
 import "./Grade.css"
 
 export default function Grade(props) {
-  const { name, weight, score, id } = props.data
+  const { name, score, id } = props.data
   return (
     <div>
       <input
@@ -15,16 +15,8 @@ export default function Grade(props) {
       />
       <input
         className="component-grade-input num"
-        name="weight"
-        placeholder="Weight"
-        type="number"
-        value={weight}
-        onChange={(event) => props.handleChange(event, props.sectionID, id)}
-      />
-      <input
-        className="component-grade-input num"
         name="score"
-        placeholder="Score"
+        placeholder="Grade"
         type="number"
         value={score}
         onChange={(event) => props.handleChange(event, props.sectionID, id)}

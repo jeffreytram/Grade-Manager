@@ -118,6 +118,12 @@ export default class Form extends React.Component {
           const gradeKey = section.gradeKey
           section.gradeList.push({ id: gradeKey, name: "", weight: "", score: "" })
           section.gradeKey++
+          let sectionGrade = 0
+          section.gradeList.forEach(grade => {
+            grade.weight = 1 / section.gradeList.length
+            sectionGrade += grade.weight * grade.score
+          })
+          section.sectionGrade = sectionGrade
           return section
         }
       })
@@ -135,6 +141,12 @@ export default class Form extends React.Component {
           return section
         } else {
           section.gradeList = section.gradeList.filter(grade => grade.id !== gradeID)
+          let sectionGrade = 0
+          section.gradeList.forEach(grade => {
+            grade.weight = 1 / section.gradeList.length
+            sectionGrade += grade.weight * grade.score
+          })
+          section.sectionGrade = sectionGrade
           return section
         }
       })

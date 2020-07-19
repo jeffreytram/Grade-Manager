@@ -137,6 +137,10 @@ v1.0
 - fixed bug with rounding grades
 - added class deletion button to top right of each tab
 - moved placement of section grade, other CSS changes
+- assumes every grade in a section has the same weight
+
+
+toggle in each section for manual input for grade weights
 
 
 TODO:
