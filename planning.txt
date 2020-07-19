@@ -137,10 +137,16 @@ v1.0
 - fixed bug with rounding grades
 - added class deletion button to top right of each tab
 - moved placement of section grade, other CSS changes
+
+7.19.20
 - assumes every grade in a section has the same weight
+- changes to grade calculation algorithm
+  - grades not entered are now not counted towards the section grade
 
-
+grade manager logo
+added grades with no grade value not count towards class grade
 toggle in each section for manual input for grade weights
+add date attribute to grades
 
 
 TODO:
