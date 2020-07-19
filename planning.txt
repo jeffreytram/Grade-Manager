@@ -136,6 +136,7 @@ v1.0
 - changed placement and style of add grade and delete section buttons
 - fixed bug with rounding grades
 - added class deletion button to top right of each tab
+- moved placement of section grade, other CSS changes
 
 
 TODO:

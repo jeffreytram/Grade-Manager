@@ -28,6 +28,14 @@
   color: gray;
 }
 
+.component-section-grade {
+  position: absolute;
+  right: 3px;
+  bottom: 3px;
+  color: rgba(30 , 30, 30, .1);
+  font-size: 50px;
+}
+
 .red {
   background-color: rgba(207, 18, 89, .08);
 }

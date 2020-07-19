@@ -226,7 +226,7 @@ export default class Form extends React.Component {
             }
             return (
               <div
-                className={(this.state.classList[this.state.currClass].id === cls.id) ? "component-class-tab active" : "component-class-tab"}
+                className={(this.state.classList[this.state.currClass].id === cls.id) ? "component-class-tab active-tab" : "component-class-tab"}
                 onClick={(event) => this.setActiveIndex(event, cls.id)}
               >
                 {className}

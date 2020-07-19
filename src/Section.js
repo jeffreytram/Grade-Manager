@@ -27,7 +27,7 @@ export default function Section(props) {
         value={sectionWeight}
         onChange={(event) => props.handleChange(event, id)}
       />
-      <span>Grade: {sectionGrade.toFixed(2)}</span>
+      <span className="component-section-grade">{sectionGrade.toFixed(2)}</span>
       <GradeList
         data={props.data}
         deleteGrade={props.deleteGrade}
