@@ -145,13 +145,11 @@ v1.0
 - class and section grade calculation changes
   - changed section weights from decimal to percentage
   - deleting sections now updates class grade accordingly
+- added favicon
 
 
 
-grade manager logo
-added grades with no grade value not count towards class grade
 toggle in each section for manual input for grade weights
-add date attribute to grades
 
 
 TODO:
