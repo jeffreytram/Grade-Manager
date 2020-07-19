@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.css": "/Grade-Manager/static/css/main.6812a263.chunk.css",
-    "main.js": "/Grade-Manager/static/js/main.bd2051b8.chunk.js",
-    "main.js.map": "/Grade-Manager/static/js/main.bd2051b8.chunk.js.map",
+    "main.css": "/Grade-Manager/static/css/main.44e4368c.chunk.css",
+    "main.js": "/Grade-Manager/static/js/main.a46eb7d8.chunk.js",
+    "main.js.map": "/Grade-Manager/static/js/main.a46eb7d8.chunk.js.map",
     "runtime-main.js": "/Grade-Manager/static/js/runtime-main.f0911a4f.js",
     "runtime-main.js.map": "/Grade-Manager/static/js/runtime-main.f0911a4f.js.map",
     "static/js/2.17b4d53b.chunk.js": "/Grade-Manager/static/js/2.17b4d53b.chunk.js",
     "static/js/2.17b4d53b.chunk.js.map": "/Grade-Manager/static/js/2.17b4d53b.chunk.js.map",
     "index.html": "/Grade-Manager/index.html",
-    "precache-manifest.3775c28931f14c3d1bec64aaf86cf4dd.js": "/Grade-Manager/precache-manifest.3775c28931f14c3d1bec64aaf86cf4dd.js",
+    "precache-manifest.a6ae3e7f0e5951d9646b82cd1f3903c2.js": "/Grade-Manager/precache-manifest.a6ae3e7f0e5951d9646b82cd1f3903c2.js",
     "service-worker.js": "/Grade-Manager/service-worker.js",
-    "static/css/main.6812a263.chunk.css.map": "/Grade-Manager/static/css/main.6812a263.chunk.css.map",
+    "static/css/main.44e4368c.chunk.css.map": "/Grade-Manager/static/css/main.44e4368c.chunk.css.map",
     "static/js/2.17b4d53b.chunk.js.LICENSE.txt": "/Grade-Manager/static/js/2.17b4d53b.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.f0911a4f.js",
     "static/js/2.17b4d53b.chunk.js",
-    "static/css/main.6812a263.chunk.css",
-    "static/js/main.bd2051b8.chunk.js"
+    "static/css/main.44e4368c.chunk.css",
+    "static/js/main.a46eb7d8.chunk.js"
   ]
 }
