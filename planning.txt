@@ -146,6 +146,7 @@ v1.0
   - changed section weights from decimal to percentage
   - deleting sections now updates class grade accordingly
 - added favicon
+- added box shadows, other css changes
 
 
 

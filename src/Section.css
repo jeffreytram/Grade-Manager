@@ -3,6 +3,9 @@
   border-radius: 10px;
   margin: 10px 0px;
   padding: 15px 5px;
+  -webkit-box-shadow: 2px 2px 2px 0px rgba(0, 0, 0, 0.15);
+  -moz-box-shadow: 2px 2px 2px 0px rgba(0, 0, 0, 0.15);
+  box-shadow: 2px 2px 2px 0px rgba(0, 0, 0, 0.15);
 }
 
 .component-section-input {
@@ -32,7 +35,7 @@
   position: absolute;
   right: 3px;
   bottom: 3px;
-  color: rgba(30 , 30, 30, .2);
+  color: rgba(30, 30, 30, .2);
   font-size: 35px;
   z-index: -1;
 }
