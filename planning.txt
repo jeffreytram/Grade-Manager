@@ -142,6 +142,11 @@ v1.0
 - assumes every grade in a section has the same weight
 - changes to grade calculation algorithm
   - grades not entered are now not counted towards the section grade
+- class and section grade calculation changes
+  - changed section weights from decimal to percentage
+  - deleting sections now updates class grade accordingly
+
+
 
 grade manager logo
 added grades with no grade value not count towards class grade

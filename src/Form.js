@@ -79,6 +79,10 @@ export default class Form extends React.Component {
     this.setState(prevState => {
       const newList = [...prevState.classList]
       newList[prevState.currClass].sectionList = newList[prevState.currClass].sectionList.filter(section => section.id !== sectionID)
+
+      let classGrade = 0
+      newList[prevState.currClass].sectionList.forEach(section => classGrade += section.sectionWeight * section.sectionGrade / 100)
+      newList[prevState.currClass].classGrade = classGrade
       return {
         classList: newList
       }
@@ -184,11 +188,11 @@ export default class Form extends React.Component {
 
         updatedList[index].sectionList.map(section => {
           if (section.id !== sectionID) {
-            classGrade += section.sectionWeight * section.sectionGrade
+            classGrade += section.sectionWeight * section.sectionGrade / 100
             return section
           } else {
             section[name] = value
-            classGrade += section.sectionWeight * section.sectionGrade
+            classGrade += section.sectionWeight * section.sectionGrade / 100
             return section
           }
         })
@@ -204,9 +208,8 @@ export default class Form extends React.Component {
 
         let classGrade = 0
         updatedClassList[index].sectionList = updatedClassList[index].sectionList.map(section => {
-          let sectionGrade = 0
           if (section.id !== sectionID) {
-            classGrade += section.sectionWeight * section.sectionGrade
+            classGrade += section.sectionWeight * section.sectionGrade / 100
             return section
           } else {
             section.gradeList = section.gradeList.map(grade => {
@@ -220,7 +223,7 @@ export default class Form extends React.Component {
               }
             })
             section.sectionGrade = this.calcSectionGrade(section.gradeList)
-            classGrade += section.sectionWeight * section.sectionGrade
+            classGrade += section.sectionWeight * section.sectionGrade / 100
             return section
           }
         })
