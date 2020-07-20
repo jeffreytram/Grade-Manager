@@ -238,7 +238,6 @@ export default class Form extends React.Component {
   render() {
     return (
       <div>
-        <button className="component-add-class-btn" onClick={this.addClass}>Add class</button>        <br /> <br />
         <div className="component-flex-container">
           {this.state.classList.map(cls => {
             let className = cls.name
@@ -250,7 +249,7 @@ export default class Form extends React.Component {
                 className={(this.state.classList[this.state.currClass].id === cls.id) ? "component-class-tab active-tab" : "component-class-tab"}
                 onClick={(event) => this.setActiveIndex(event, cls.id)}
               >
-                {className}
+                <div className="component-class-tab-name">{className}</div>
                 <button
                   className="component-delete-class-btn"
                   onClick={() => this.deleteClass(cls.id)}
@@ -260,8 +259,8 @@ export default class Form extends React.Component {
               </div>
             )
           })}
+          <button className="component-add-class-btn" onClick={this.addClass}>+</button>
         </div>
-        <br /> <br />
         {(this.state.classList.length !== 0) ?
           <Class
             data={this.state.classList[this.state.currClass]}
@@ -272,7 +271,7 @@ export default class Form extends React.Component {
             handleChange={this.handleChange}
           />
           :
-          <h4>Add a class to get started!</h4>
+          <h4>Click the "+" to add a class!</h4>
         }
       </div>
     )

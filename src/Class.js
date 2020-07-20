@@ -7,26 +7,28 @@ export default function Class(props) {
 
   return (
     <div className="component-class-container">
-      <input
-        className="component-class-name"
-        name="className"
-        placeholder="Class Name"
-        type="text"
-        value={name}
-        onChange={(event) => props.handleChange(event, id)}
-      />
-      <span className="component-class-grade">Class Grade: {classGrade.toFixed(2)}</span>
-      <br /> <br />
-      <button className="component-add-section-btn" onClick={props.addSection}>Add Section</button>
-      {sectionList.map(section => {
-        return <Section
-          data={section}
-          deleteSection={props.deleteSection}
-          addGrade={props.addGrade}
-          deleteGrade={props.deleteGrade}
-          handleChange={props.handleChange}
+      <div className="component-class-content-container">
+        <input
+          className="component-class-name"
+          name="className"
+          placeholder="Class Name"
+          type="text"
+          value={name}
+          onChange={(event) => props.handleChange(event, id)}
         />
-      })}
+        <span className="component-class-grade">Class Grade: {classGrade.toFixed(2)}</span>
+        <br /> <br />
+        <button className="component-add-section-btn" onClick={props.addSection}>Add Section</button>
+        {sectionList.map(section => {
+          return <Section
+            data={section}
+            deleteSection={props.deleteSection}
+            addGrade={props.addGrade}
+            deleteGrade={props.deleteGrade}
+            handleChange={props.handleChange}
+          />
+        })}
+      </div>
     </div>
   )
 }

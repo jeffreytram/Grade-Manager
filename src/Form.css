@@ -1,32 +1,42 @@
 .component-flex-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-  gap: 5px 10px;
+  display: flex;
 }
 
 .component-class-tab {
   position: relative;
-  border: 0;
-  border-bottom: 1px solid rgba(30, 30, 30, .5);
-  padding: 5px 10px 0px 10px;
+  width: 20vw;
+  border: 2px solid rgba(30, 30, 30, .1);
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  overflow: hidden;
+  white-space: nowrap;
+  padding: 5px 10px 1px 10px;
 }
 
 .active-tab {
-  border-bottom: 2px solid rgba(30, 30, 30);
+  border-bottom: none;
+  background-color: rgb(248,248,248);
   font-weight: bold;
+}
+
+.component-class-tab-name {
+  margin-right: 9px;
+  overflow: hidden;
+  pointer-events: none;
 }
 
 .component-add-class-btn {
   border-radius: 5px;
-  border: 2px solid rgba(92, 148, 110, .5);
+  border: 2px solid rgb(92, 148, 110);
   background-color: white;
-  padding: 6px 15px;
+  font-weight: bold;
+  padding: 5px 10px;
 }
 
 .component-delete-class-btn {
   position: absolute;
-  top: 2px;
-  right: -4px;
+  top: 9px;
+  right: -2px;
   border: none;
   background-color: rgba(0, 0, 0, 0);
 }
