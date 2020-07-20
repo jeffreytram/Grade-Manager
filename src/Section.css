@@ -41,21 +41,26 @@
 }
 
 .red {
-  background-color: rgba(207, 18, 89, .08);
+  background: rgb(232, 169, 193);
+  background: linear-gradient(110deg, rgba(232, 169, 193, .10) 0%, rgba(207, 18, 89, .10) 100%);
 }
 
 .yellow {
-  background-color: rgba(255, 240, 124, .08);
+  background: rgb(248, 243, 205);
+  background: linear-gradient(110deg, rgba(248, 243, 205, .10) 0%, rgba(255, 240, 124, .10) 100%);
 }
 
 .green {
-  background-color: rgba(92, 148, 110, .08);
+  background: rgb(194, 213, 200);
+  background: linear-gradient(110deg, rgba(194, 213, 200, .10) 0%, rgba(92, 148, 110, .10) 100%);
 }
 
 .blue {
-  background-color: rgba(39, 154, 241, .08);
+  background: rgb(176, 215, 244);
+  background: linear-gradient(110deg, rgba(176, 215, 244, .10) 0%, rgba(39, 154, 241, .10) 100%);
 }
 
 .purple {
-  background-color: rgba(135, 89, 155, .08);
+  background: rgb(208, 193, 215);
+  background: linear-gradient(110deg, rgba(208, 193, 215, .10) 0%, rgba(135, 89, 155, .10) 100%);
 }

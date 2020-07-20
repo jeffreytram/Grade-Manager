@@ -147,6 +147,7 @@ v1.0
   - deleting sections now updates class grade accordingly
 - added favicon
 - added box shadows, other css changes
+- added linear gradient
 
 
 
