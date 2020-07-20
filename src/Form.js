@@ -100,8 +100,6 @@ export default class Form extends React.Component {
   }
 
   setActiveIndex(event, classID) {
-    console.log(event.target)
-    console.log(event.target.className)
     if (event.target.className === "component-class-tab") {
       this.setState(prevState => {
         const classIDs = prevState.classList.map(cls => cls.id)

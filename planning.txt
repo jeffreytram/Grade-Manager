@@ -153,9 +153,9 @@ v1.0
 - changes to class tabs css, other css changes
   - now displayed in only 1 row
   - class tab names no longer blocks the "X" to delete the classes
+- fixed issue with section grade display
 
 
-add logo in bg
 hovering over class tab displays class full name and class grade
 toggle in each section for manual input for grade weights
 

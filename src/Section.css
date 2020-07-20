@@ -20,6 +20,7 @@
   right: 30px;
   border: none;
   background-color: rgba(0, 0, 0, 0);
+  z-index: 1;
 }
 
 .component-delete-section-btn {
@@ -29,6 +30,7 @@
   border: none;
   background-color: rgba(0, 0, 0, 0);
   color: gray;
+  z-index: 1;
 }
 
 .component-section-grade {
@@ -37,7 +39,6 @@
   bottom: 3px;
   color: rgba(30, 30, 30, .2);
   font-size: 35px;
-  z-index: -1;
 }
 
 .red {
