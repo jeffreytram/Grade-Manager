@@ -159,6 +159,7 @@ v1.0
 - added 1 class by default
 - changed tabs to buttons
 - css changes
+- changed class tab borders to be consistent with class border
 
 
 hovering over class tab displays class full name and class grade
