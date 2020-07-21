@@ -155,6 +155,11 @@ v1.0
   - class tab names no longer blocks the "X" to delete the classes
 - fixed issue with section grade display
 
+7.21.20
+- added 1 class by default
+- changed tabs to buttons
+- css changes
+
 
 hovering over class tab displays class full name and class grade
 toggle in each section for manual input for grade weights

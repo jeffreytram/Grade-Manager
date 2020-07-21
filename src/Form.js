@@ -26,6 +26,8 @@ export default class Form extends React.Component {
     const classKey = parseInt(localStorage.getItem('classKey'))
     if (classList !== null) {
       this.setState({ classList, currClass, classKey })
+    } else {
+      this.addClass()
     }
   }
 
@@ -243,18 +245,18 @@ export default class Form extends React.Component {
               className = "Class " + (cls.id + 1)
             }
             return (
-              <div
+              <button
                 className={(this.state.classList[this.state.currClass].id === cls.id) ? "component-class-tab active-tab" : "component-class-tab"}
                 onClick={(event) => this.setActiveIndex(event, cls.id)}
               >
                 <div className="component-class-tab-name">{className}</div>
-                <button
+                <div
                   className="component-delete-class-btn"
                   onClick={() => this.deleteClass(cls.id)}
                 >
                   X
-                </button>
-              </div>
+                </div>
+              </button>
             )
           })}
           <button className="component-add-class-btn" onClick={this.addClass}>+</button>
