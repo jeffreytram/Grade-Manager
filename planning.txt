@@ -160,6 +160,7 @@ v1.0
 - changed tabs to buttons
 - css changes
 - changed class tab borders to be consistent with class border
+- improved style consistency
 
 
 hovering over class tab displays class full name and class grade
