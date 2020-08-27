@@ -242,7 +242,7 @@ export default class Form extends React.Component {
           {this.state.classList.map(cls => {
             let className = cls.name
             if (className === "") {
-              className = "Class " + (cls.id + 1)
+              className = "New class"
             }
             return (
               <button
