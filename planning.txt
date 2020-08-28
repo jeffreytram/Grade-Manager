@@ -162,18 +162,17 @@ v1.0
 - changed class tab borders to be consistent with class border
 - improved style consistency
 
+8.27.20
+- changed new class default name
+- added draggable sections
+
+currently exploring react beautiful dnd library
+https://egghead.io/courses/beautiful-and-accessible-drag-and-drop-with-react-beautiful-dnd
+
+
 
 hovering over class tab displays class full name and class grade
 toggle in each section for manual input for grade weights
-
-TODO:
-- button changes
-  - delete button at top right of corner
-  - appears on hover
-  
-- data viz of grade over time?
-  - line graph with class grade over time
-  - line for each class
 
 
 

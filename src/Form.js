@@ -17,6 +17,7 @@ export default class Form extends React.Component {
     this.addGrade = this.addGrade.bind(this)
     this.deleteGrade = this.deleteGrade.bind(this)
     this.handleChange = this.handleChange.bind(this)
+    this.updateSectionList = this.updateSectionList.bind(this)
   }
 
   componentDidMount() {
@@ -235,6 +236,27 @@ export default class Form extends React.Component {
     }
   }
 
+  updateSectionList(classID, newSectionList) {
+    this.setState(prevState => {
+      let newList = [...prevState.classList]
+      let clsIndex = this.getClassIndex(classID)
+      newList[clsIndex].sectionList = newSectionList
+      return {
+        classList: newList
+      }
+    })
+  }
+
+  getClassIndex(classID) {
+    const classList = this.state.classList
+    for (let i = 0; i < classList.length; i++) {
+      if (classList[i].id === classID) {
+        return i
+      }
+    }
+    return -1
+  }
+
   render() {
     return (
       <div>
@@ -269,6 +291,7 @@ export default class Form extends React.Component {
             addGrade={this.addGrade}
             deleteGrade={this.deleteGrade}
             handleChange={this.handleChange}
+            updateSectionList={this.updateSectionList}
           />
           :
           <h4>Click the "+" to add a class!</h4>
