@@ -13,14 +13,8 @@ export default function Class(props) {
     if (result.destination.index === result.source.index) {
       return
     }
-    const newSectionList = reorder(sectionList, result.source.index, result.destination.index)
+    const newSectionList = props.reorder(sectionList, result.source.index, result.destination.index)
     props.updateSectionList(id, newSectionList)
-  }
-
-  function reorder(list, srcIndex, destIndex) {
-    const [removed] = list.splice(srcIndex, 1)
-    list.splice(destIndex, 0, removed)
-    return list
   }
 
   return (

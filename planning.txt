@@ -165,6 +165,7 @@ v1.0
 8.27.20
 - changed new class default name
 - added draggable sections
+- created class tab component
 
 currently exploring react beautiful dnd library
 https://egghead.io/courses/beautiful-and-accessible-drag-and-drop-with-react-beautiful-dnd

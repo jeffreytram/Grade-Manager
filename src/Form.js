@@ -1,5 +1,6 @@
 import React from "react";
 import Class from "./Class"
+import ClassTab from "./ClassTab"
 import "./Form.css"
 
 export default class Form extends React.Component {
@@ -14,10 +15,12 @@ export default class Form extends React.Component {
     this.deleteClass = this.deleteClass.bind(this)
     this.addSection = this.addSection.bind(this)
     this.deleteSection = this.deleteSection.bind(this)
+    this.setActiveIndex = this.setActiveIndex.bind(this)
     this.addGrade = this.addGrade.bind(this)
     this.deleteGrade = this.deleteGrade.bind(this)
     this.handleChange = this.handleChange.bind(this)
     this.updateSectionList = this.updateSectionList.bind(this)
+    this.reorder = this.reorder.bind(this)
   }
 
   componentDidMount() {
@@ -247,6 +250,12 @@ export default class Form extends React.Component {
     })
   }
 
+  reorder(list, srcIndex, destIndex) {
+    const [removed] = list.splice(srcIndex, 1)
+    list.splice(destIndex, 0, removed)
+    return list
+  }
+
   getClassIndex(classID) {
     const classList = this.state.classList
     for (let i = 0; i < classList.length; i++) {
@@ -267,18 +276,13 @@ export default class Form extends React.Component {
               className = "New class"
             }
             return (
-              <button
+              <ClassTab
+                id={cls.id}
+                name={className}
                 className={(this.state.classList[this.state.currClass].id === cls.id) ? "component-class-tab active-tab" : "component-class-tab"}
-                onClick={(event) => this.setActiveIndex(event, cls.id)}
-              >
-                <div className="component-class-tab-name">{className}</div>
-                <div
-                  className="component-delete-class-btn"
-                  onClick={() => this.deleteClass(cls.id)}
-                >
-                  X
-                </div>
-              </button>
+                setActiveIndex={this.setActiveIndex}
+                deleteClass={this.deleteClass}
+              />
             )
           })}
           <button className="component-add-class-btn" onClick={this.addClass}>+</button>
@@ -292,6 +296,7 @@ export default class Form extends React.Component {
             deleteGrade={this.deleteGrade}
             handleChange={this.handleChange}
             updateSectionList={this.updateSectionList}
+            reorder={this.reorder}
           />
           :
           <h4>Click the "+" to add a class!</h4>
