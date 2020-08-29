@@ -41,7 +41,6 @@ export default function Section(props) {
           />
         </div>
       )}
-
     </Draggable>
   )
 }

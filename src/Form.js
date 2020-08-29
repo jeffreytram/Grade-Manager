@@ -2,6 +2,7 @@ import React from "react";
 import Class from "./Class"
 import ClassTab from "./ClassTab"
 import "./Form.css"
+import { DragDropContext, Droppable } from 'react-beautiful-dnd'
 
 export default class Form extends React.Component {
   constructor(props) {
@@ -15,11 +16,13 @@ export default class Form extends React.Component {
     this.deleteClass = this.deleteClass.bind(this)
     this.addSection = this.addSection.bind(this)
     this.deleteSection = this.deleteSection.bind(this)
+    this.handleTabClick = this.handleTabClick.bind(this)
     this.setActiveIndex = this.setActiveIndex.bind(this)
     this.addGrade = this.addGrade.bind(this)
     this.deleteGrade = this.deleteGrade.bind(this)
     this.handleChange = this.handleChange.bind(this)
     this.updateSectionList = this.updateSectionList.bind(this)
+    this.onDragEnd = this.onDragEnd.bind(this)
     this.reorder = this.reorder.bind(this)
   }
 
@@ -105,15 +108,19 @@ export default class Form extends React.Component {
     }
   }
 
-  setActiveIndex(event, classID) {
+  handleTabClick(event, classID) {
     if (event.target.className === "component-class-tab") {
-      this.setState(prevState => {
-        const classIDs = prevState.classList.map(cls => cls.id)
-        return {
-          currClass: classIDs.indexOf(classID)
-        }
-      })
+      this.setActiveIndex(classID)
     }
+  }
+
+  setActiveIndex(classID) {
+    this.setState(prevState => {
+      const classIDs = prevState.classList.map(cls => cls.id)
+      return {
+        currClass: classIDs.indexOf(classID)
+      }
+    })
   }
 
   calcSectionGrade(gradeList) {
@@ -250,6 +257,19 @@ export default class Form extends React.Component {
     })
   }
 
+  //handles drag end of class tabs
+  onDragEnd(result) {
+    if (!result.destination) {
+      return
+    }
+    if (result.destination.index === result.source.index) {
+      return
+    }
+    const newClassList = this.reorder(this.state.classList, result.source.index, result.destination.index)
+    this.setState({ classList: newClassList })
+    this.setActiveIndex(parseInt(result.draggableId))
+  }
+
   reorder(list, srcIndex, destIndex) {
     const [removed] = list.splice(srcIndex, 1)
     list.splice(destIndex, 0, removed)
@@ -270,21 +290,35 @@ export default class Form extends React.Component {
     return (
       <div>
         <div className="component-flex-container">
-          {this.state.classList.map(cls => {
-            let className = cls.name
-            if (className === "") {
-              className = "New class"
-            }
-            return (
-              <ClassTab
-                id={cls.id}
-                name={className}
-                className={(this.state.classList[this.state.currClass].id === cls.id) ? "component-class-tab active-tab" : "component-class-tab"}
-                setActiveIndex={this.setActiveIndex}
-                deleteClass={this.deleteClass}
-              />
-            )
-          })}
+          <DragDropContext onDragEnd={this.onDragEnd}>
+            <Droppable droppableId="0" direction="horizontal">
+              {(provided) => (
+                <div
+                  ref={provided.innerRef}
+                  {...provided.droppableProps}
+                >
+                  {this.state.classList.map((cls, index) => {
+                    let className = cls.name
+                    if (className === "") {
+                      className = "New class"
+                    }
+                    return (
+                      <ClassTab
+                        key={cls.id}
+                        id={cls.id}
+                        index={index}
+                        name={className}
+                        className={(this.state.classList[this.state.currClass].id === cls.id) ? "component-class-tab active-tab" : "component-class-tab"}
+                        handleTabClick={this.handleTabClick}
+                        deleteClass={this.deleteClass}
+                      />
+                    )
+                  })}
+                  {provided.placeholder}
+                </div>
+              )}
+            </Droppable>
+          </DragDropContext>
           <button className="component-add-class-btn" onClick={this.addClass}>+</button>
         </div>
         {(this.state.classList.length !== 0) ?

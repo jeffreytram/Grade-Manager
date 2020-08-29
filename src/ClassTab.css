@@ -1,4 +1,5 @@
 .component-class-tab {
+  display: inline-block;
   position: relative;
   width: 20vw;
   border: none;
