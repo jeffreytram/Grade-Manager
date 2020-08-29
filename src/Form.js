@@ -172,6 +172,9 @@ export default class Form extends React.Component {
           return section
         }
       })
+      let classGrade = 0
+      newList[prevState.currClass].sectionList.forEach(section => classGrade += section.sectionWeight * section.sectionGrade / 100)
+      newList[prevState.currClass].classGrade = classGrade
       return {
         classList: newList
       }

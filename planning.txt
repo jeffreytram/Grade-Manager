@@ -172,6 +172,7 @@ v1.0
 8.29.20
 - class tabs can now be reorganized by dragging
 - fixed class tabs css
+- fixed delete grade not updating class grade
 
 
 currently exploring react beautiful dnd library
