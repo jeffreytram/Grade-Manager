@@ -289,11 +289,11 @@ export default class Form extends React.Component {
   render() {
     return (
       <div>
-        <div className="component-flex-container">
           <DragDropContext onDragEnd={this.onDragEnd}>
             <Droppable droppableId="0" direction="horizontal">
               {(provided) => (
                 <div
+                  className="component-flex-container"
                   ref={provided.innerRef}
                   {...provided.droppableProps}
                 >
@@ -315,12 +315,11 @@ export default class Form extends React.Component {
                     )
                   })}
                   {provided.placeholder}
+                  <button className="component-add-class-btn" onClick={this.addClass}>+</button>
                 </div>
               )}
             </Droppable>
           </DragDropContext>
-          <button className="component-add-class-btn" onClick={this.addClass}>+</button>
-        </div>
         {(this.state.classList.length !== 0) ?
           <Class
             data={this.state.classList[this.state.currClass]}

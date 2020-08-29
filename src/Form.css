@@ -14,11 +14,3 @@
   background-color: rgb(92, 148, 110);
   color: white;
 }
-
-.component-delete-class-btn {
-  position: absolute;
-  top: 9px;
-  right: 3px;
-  border: none;
-  background-color: rgba(0, 0, 0, 0);
-}

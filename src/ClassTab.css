@@ -1,5 +1,4 @@
 .component-class-tab {
-  display: inline-block;
   position: relative;
   width: 20vw;
   border: none;
@@ -29,4 +28,12 @@
   margin-right: 9px;
   overflow: hidden;
   pointer-events: none;
+}
+
+.component-delete-class-btn {
+  position: absolute;
+  top: 5px;
+  right: 3px;
+  border: none;
+  background-color: rgba(0, 0, 0, 0);
 }
