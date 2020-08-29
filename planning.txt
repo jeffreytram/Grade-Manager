@@ -173,6 +173,7 @@ v1.0
 - class tabs can now be reorganized by dragging
 - fixed class tabs css
 - fixed delete grade not updating class grade
+- added documentation to Form.js
 
 
 currently exploring react beautiful dnd library

@@ -46,6 +46,9 @@ export default class Form extends React.Component {
     localStorage.setItem('classKey', classKey)
   }
 
+  /**
+   * Adds a new class to the class list
+   */
   addClass() {
     this.setState(prevState => {
       return {
@@ -56,6 +59,10 @@ export default class Form extends React.Component {
     })
   }
 
+  /**
+   * Deletes the class with the given classID from the classList
+   * @param {Number} classID the ID of the class to delete 
+   */
   deleteClass(classID) {
     this.setState(prevState => {
       let newList = prevState.classList
@@ -73,6 +80,9 @@ export default class Form extends React.Component {
     })
   }
 
+  /**
+   * Adds a new section to the sectionList of the current class
+   */
   addSection() {
     this.setState(prevState => {
       const newList = [...prevState.classList]
@@ -84,6 +94,10 @@ export default class Form extends React.Component {
     })
   }
 
+  /**
+   * Deletes the section with the given sectionID in the current class
+   * @param {Number} sectionID the ID of the section to delete
+   */
   deleteSection(sectionID) {
     this.setState(prevState => {
       const newList = [...prevState.classList]
@@ -98,6 +112,12 @@ export default class Form extends React.Component {
     })
   }
 
+  /**
+   * Gets the index of the next class after the current class is deleted
+   * Prioritizes right neighboring class before left
+   * @param {Array} arr the class list
+   * @param {Number} currIndex the index of the current class 
+   */
   findNextClass(arr, currIndex) {
     if (currIndex < arr.length - 1) {
       return currIndex
@@ -108,12 +128,21 @@ export default class Form extends React.Component {
     }
   }
 
+  /**
+   * Handles the event of a class tab click
+   * @param {Object} event the event
+   * @param {Number} classID the class ID of the tab clicked
+   */
   handleTabClick(event, classID) {
     if (event.target.className === "component-class-tab") {
       this.setActiveIndex(classID)
     }
   }
 
+  /**
+   * Sets the current class index to the index of the class with the given class ID
+   * @param {Number} classID the class ID of the class to set as the current class
+   */
   setActiveIndex(classID) {
     this.setState(prevState => {
       const classIDs = prevState.classList.map(cls => cls.id)
@@ -123,6 +152,10 @@ export default class Form extends React.Component {
     })
   }
 
+  /**
+   * Calculates the section grade given a list of grades
+   * @param {Array} gradeList the list of grades
+   */
   calcSectionGrade(gradeList) {
     let sectionGrade = 0
     let totalWeight = 0
@@ -141,6 +174,10 @@ export default class Form extends React.Component {
     return sectionGrade
   }
 
+  /**
+   * Adds a grade to the section with the given section ID in the current class
+   * @param {Number} sectionID the section ID of the section to add the grade to
+   */
   addGrade(sectionID) {
     this.setState(prevState => {
       const newList = [...prevState.classList]
@@ -160,6 +197,11 @@ export default class Form extends React.Component {
     })
   }
 
+  /**
+   * Deletes the grade with the given grade ID in the section with the given section ID
+   * @param {*} sectionID the section ID of the section that contains the grade to delete
+   * @param {*} gradeID the grade ID of the grade to delete
+   */
   deleteGrade(sectionID, gradeID) {
     this.setState(prevState => {
       const newList = [...prevState.classList]
@@ -181,10 +223,16 @@ export default class Form extends React.Component {
     })
   }
 
+  /**
+   * Handles the change of class, section, and grade info
+   * @param {Object} event the event
+   * @param {Number} sectionID the ID of the section the event occurs in
+   * @param {Number} gradeID the ID of the grade the event occurs in
+   */
   handleChange(event, sectionID, gradeID) {
     const { name, value } = event.target
     if (name === "className") {
-      //change name based on id
+      //handles class name change
       this.setState(prevState => {
         const index = prevState.currClass
         const updatedList = prevState.classList
@@ -194,6 +242,7 @@ export default class Form extends React.Component {
         }
       })
     } else if (name === "sectionName" || name === "sectionWeight") {
+      //handles section name and weight change
       this.setState(prevState => {
         const index = prevState.currClass
         const updatedList = prevState.classList
@@ -216,6 +265,7 @@ export default class Form extends React.Component {
         }
       })
     } else {
+      //handles grade name and grade value change
       this.setState(prevState => {
         const updatedClassList = prevState.classList
         const index = prevState.currClass
@@ -249,6 +299,11 @@ export default class Form extends React.Component {
     }
   }
 
+  /**
+   * Updates the section list of the class with the given class ID with the provided new section list
+   * @param {*} classID the ID of the class to update the section list of
+   * @param {*} newSectionList the new section list to replace the old one with
+   */
   updateSectionList(classID, newSectionList) {
     this.setState(prevState => {
       let newList = [...prevState.classList]
@@ -260,7 +315,10 @@ export default class Form extends React.Component {
     })
   }
 
-  //handles drag end of class tabs
+  /**
+   * handles the drag end of class tabs
+   * @param {Object} result the result of the drag
+   */
   onDragEnd(result) {
     if (!result.destination) {
       return
@@ -273,12 +331,22 @@ export default class Form extends React.Component {
     this.setActiveIndex(parseInt(result.draggableId))
   }
 
+  /**
+   * Moves the item at srcIndex to destIndex in the given list
+   * @param {*} list the list to reorder
+   * @param {*} srcIndex the index of the item to move
+   * @param {*} destIndex the index of the destination
+   */
   reorder(list, srcIndex, destIndex) {
     const [removed] = list.splice(srcIndex, 1)
     list.splice(destIndex, 0, removed)
     return list
   }
 
+  /**
+   * Returns the index of the class given the class ID
+   * @param {Number} classID the ID of the class to get the index of
+   */
   getClassIndex(classID) {
     const classList = this.state.classList
     for (let i = 0; i < classList.length; i++) {
