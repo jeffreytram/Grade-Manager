@@ -20,4 +20,6 @@ Project Duration:
 4. Run the application in development mode with `npm start`.
 
 ## 📚 Libraries
-This project uses [react-beautiful-dnd library](https://github.com/atlassian/react-beautiful-dnd) for the drag and drop functionality.
+This project uses: 
+* [react-beautiful-dnd library](https://github.com/atlassian/react-beautiful-dnd) for the drag and drop functionality
+* [react-tooltip](https://github.com/wwayne/react-tooltip) for the class tab tooltip functionality

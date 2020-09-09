@@ -13,8 +13,17 @@
   box-shadow: -3px 0px 2px -2px rgba(0, 0, 0, 0.15), 0px -3px 2px -2px rgba(0, 0, 0, 0.15), 3px 0px 2px -2px rgba(0, 0, 0, 0.15);
 }
 
+.component-class-tab:hover {
+  cursor: pointer;
+  font-weight: bold;
+}
+
 .component-class-tab:focus {
   z-index: 1;
+}
+
+.__react_component_tooltip {
+  font-weight: 400;
 }
 
 .active-tab {

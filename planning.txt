@@ -175,19 +175,8 @@ v1.0
 - fixed delete grade not updating class grade
 - added documentation to Form.js
 
-
-currently exploring react beautiful dnd library
-https://egghead.io/courses/beautiful-and-accessible-drag-and-drop-with-react-beautiful-dnd
-
-
-
-hovering over class tab displays class full name and class grade
-toggle in each section for manual input for grade weights
-
-
-
-
-
+9.9.20
+- added class tab tooltip functionality with react-tooltip
 
 
 
@@ -231,3 +220,6 @@ toggle in each section for manual input for grade weights
 Resources:
 Deploying React App: https://create-react-app.dev/docs/deployment/#github-pages-https-pagesgithubcom
 Deploying React app in github pages: https://dev.to/yuribenjamin/how-to-deploy-react-app-in-github-pages-2a1f
+
+npm start: run application in development mode
+npm run deploy: deploy the application
