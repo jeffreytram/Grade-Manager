@@ -134,7 +134,7 @@ export default class Form extends React.Component {
    * @param {Number} classID the class ID of the tab clicked
    */
   handleTabClick(event, classID) {
-    if (event.target.className === "component-class-tab") {
+    if (event.target.className !== "component-delete-class-btn") {
       this.setActiveIndex(classID)
     }
   }
@@ -379,6 +379,7 @@ export default class Form extends React.Component {
                         id={cls.id}
                         index={index}
                         name={className}
+                        grade={cls.classGrade}
                         className={(this.state.classList[this.state.currClass].id === cls.id) ? "component-class-tab active-tab" : "component-class-tab"}
                         handleTabClick={this.handleTabClick}
                         deleteClass={this.deleteClass}
